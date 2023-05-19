@@ -13,6 +13,45 @@ import time
 import ovirtsdk4 as sdk
 import ovirtsdk4.types as types
 
+# 10 minutes timeout to take a snapshot
+timeout_seconds = 60*10
+
+# Searches for the snapshot with the description and waits for it's
+# status to change from locked to ok.
+#
+# Exits failure if it takes more than timeout_seconds.
+def waitForSnapshotToFinish(snapshots_service, description, timeout_seconds):
+    start = time.time()
+
+    snapshots = snapshots_service.list()
+    for snapshot in snapshots:
+        if snapshot.description == description:
+            snapshot_service = snapshots_service.snapshot_service(snapshot.id)
+            while True:
+                try:
+                    snap_shot = snapshot_service.get()
+                except:
+                    break
+
+                now = time.time()
+                elapsed_seconds = round(now - start, 1)
+                seconds_to_timeout = round(timeout_seconds - elapsed_seconds, 1)
+
+                logger.info("Snapshot id=%s status=%s description=%s seconds_to_timeout=%s" % 
+                    (snapshot.id, snapshot.snapshot_status, description, seconds_to_timeout))
+
+                if snap_shot.snapshot_status == types.SnapshotStatus.OK:
+                    logger.info("Finished snapshotting %s in %s seconds" % 
+                      (name, elapsed_seconds))
+                    break
+
+                if elapsed_seconds > timeout_seconds:
+                  logger.info("Snapshotting %s timed out at %s seconds" % 
+                    (name, elapsed_seconds))
+                  exit(1)
+
+                time.sleep(5)
+
 os.chdir("tmp")
 cwd = os.getcwd()
 
@@ -22,7 +61,7 @@ vm_names_file = open(vm_names_file_name, "r")
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logger = logging.getLogger("Attune")
 
-# This example will connect to the server and transfer the ISO
+# This example will connect to the server and take snapshots
 
 # Create the connection to the server:
 connection = sdk.Connection(
@@ -47,6 +86,7 @@ for line in vm_names_file:
     
     tokens = line.split(",")
     
+    # we need strip() to remove spaces and newlines around the tokens
     name = tokens[0].strip()
     id = tokens[1].strip()
     
@@ -65,30 +105,20 @@ for line in vm_names_file:
 
           description="Snapshotted from Attune at %s" % dt_string
 
-          # Add the new snapshot:
+          # Add the new snapshot.
+          #
+          # By default:
+          # 1. Persist_memorystate is true.
+          # 2. All disks are snapshotted.
           snapshots_service.add(
               types.Snapshot(
                   description=description
               ),
           )
 
+          waitForSnapshotToFinish(snapshots_service, description, timeout_seconds)
+
           snapshots = snapshots_service.list()
-          for snapshot in snapshots:
-              if snapshot.description == description:
-                  snapshot_service = snapshots_service.snapshot_service(snapshot.id)
-                  while True:
-                      try:
-                          snap_shot = snapshot_service.get()
-                      except:
-                          break
-                      
-                      logger.info("Snapshot id=%s status=%s description=%s" % (snapshot.id, snapshot.snapshot_status, description))
-
-                      if snap_shot.snapshot_status == types.SnapshotStatus.OK:
-                          logger.info("Finished snapshotting %s" % name)
-                          break
-
-                      time.sleep(5)
 
         except Exception as e:
           logger.info("Can't create snapshot for VM: %s", name)
