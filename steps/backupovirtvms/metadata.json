@@ -12,6 +12,10 @@
         {
             "order": 50, 
             "stepKey": "bovsearchandwritevmstofile"
+        }, 
+        {
+            "order": 100, 
+            "stepKey": "bovexportvmstoova"
         }
     ], 
     "name": "Backup oVirt VMs", 

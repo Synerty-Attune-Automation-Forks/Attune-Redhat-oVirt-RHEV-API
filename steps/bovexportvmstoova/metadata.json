@@ -1,0 +1,11 @@
+{
+    "enabled": true, 
+    "externalUuid4": "b9192d5d-c4c2-442f-a41d-be30ac02a0c3", 
+    "interpreter": 1, 
+    "key": "bovexportvmstoova", 
+    "name": "BOV Export VMs to OVA", 
+    "osCredKey": "linuxattuneuser", 
+    "serverKey": "attuneosbuildserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

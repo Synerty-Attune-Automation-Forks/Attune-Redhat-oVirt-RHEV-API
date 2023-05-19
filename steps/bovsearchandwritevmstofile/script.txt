@@ -54,17 +54,18 @@ try:
     i = 0
     for vm in vm_list:
         name = vm.name
+        
 
-        print("%s. %s" %(i, name))
-        vm_names_file.write(name + "\n")
+        print("%s. %s, id=%s" % (i, name, vm.id))
+        vm_names_file.write("%s,%s\n" % (name, vm.id))
             
         i += 1
         
     vm_names_file.close()
 
 except IndexError:
-    logger.info("VM must not exist yet")
-    exit(0)
+    logger.info("No VMs found")
+    exit(1)
 
 # Close the connection to the server:
 connection.close()
