@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "92b24a37-73c4-4d15-b9da-905157c1635f", 
+    "key": "ovirttimezone", 
+    "name": "oVirt: TimeZone", 
+    "showInPlan": false, 
+    "type": "c.s.s.b.phv.Text"
+}

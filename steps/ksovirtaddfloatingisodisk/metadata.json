@@ -1,0 +1,11 @@
+{
+    "enabled": true, 
+    "externalUuid4": "ae78fadd-0b06-4190-a268-804bd9892c5f", 
+    "interpreter": 1, 
+    "key": "ksovirtaddfloatingisodisk", 
+    "name": "KS oVirt Add Floating ISO Disk", 
+    "osCredKey": "linuxattuneuser", 
+    "serverKey": "attuneosbuildserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

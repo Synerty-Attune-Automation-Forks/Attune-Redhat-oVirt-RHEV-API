@@ -1,0 +1,11 @@
+{
+    "enabled": true, 
+    "externalUuid4": "33480f76-fb6c-4e6b-801a-d998c6c7da7d", 
+    "interpreter": 1, 
+    "key": "cos8rpmverifyclientyumconfig", 
+    "name": "COS8 RPM Verify Client Yum Config", 
+    "osCredKey": "linuxrootuser", 
+    "serverKey": "targetserverlin", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "afc28c3c-2462-4f45-bd32-a3635781764d", 
+    "key": "ovirtengineserver", 
+    "name": "oVirt: Engine Server", 
+    "showInPlan": false, 
+    "type": "c.s.s.b.phv.Server"
+}

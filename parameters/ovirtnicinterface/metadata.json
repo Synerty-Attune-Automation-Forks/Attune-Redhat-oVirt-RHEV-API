@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "af59f5ec-f82b-429a-bc0e-9ee71fea77fe", 
+    "key": "ovirtnicinterface", 
+    "name": "oVirt: NIC Interface", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

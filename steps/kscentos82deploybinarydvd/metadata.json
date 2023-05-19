@@ -1,0 +1,12 @@
+{
+    "archiveKey": "centosminimaldvdv822004", 
+    "deployPath": "{ksVmwareAttuneBaseDir}/build-{targetServer.fqn}", 
+    "enabled": true, 
+    "externalUuid4": "6a4ac3fe-f4af-45da-86e6-7371a31f9f70", 
+    "key": "kscentos82deploybinarydvd", 
+    "name": "KS CentOS82 Deploy Binary DVD", 
+    "osCredKey": "linuxattuneuser", 
+    "serverKey": "attuneosbuildserver", 
+    "type": "com.servertribe.attune.tuples.StepPushDesignFileTuple", 
+    "unpack": true
+}

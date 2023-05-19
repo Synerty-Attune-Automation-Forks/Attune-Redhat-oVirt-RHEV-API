@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "bf81f97e-2001-4bcc-97b4-bf85188eec3d", 
+    "key": "targetsubnet", 
+    "name": "Target Subnet", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Ip4Subnet"
+}

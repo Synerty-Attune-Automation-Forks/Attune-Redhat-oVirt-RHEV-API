@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "03b9dec4-18f5-4992-96dd-5f8b3293fbd4", 
+    "key": "ovirtcpucount", 
+    "name": "oVirt: CPU Count", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

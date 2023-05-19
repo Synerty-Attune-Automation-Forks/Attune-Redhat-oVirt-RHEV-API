@@ -1,0 +1,11 @@
+{
+    "enabled": true, 
+    "externalUuid4": "fdb9a75c-2dc5-4e51-9191-6d47130e46c8", 
+    "interpreter": 1, 
+    "key": "ksovirtdeletevm", 
+    "name": "KS oVirt Delete VM", 
+    "osCredKey": "linuxattuneuser", 
+    "serverKey": "attuneosbuildserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

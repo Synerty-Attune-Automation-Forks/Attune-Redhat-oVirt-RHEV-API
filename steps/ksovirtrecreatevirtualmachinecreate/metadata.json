@@ -1,0 +1,43 @@
+{
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "3054a511-a72e-4fb0-bb63-0f3be170a55c", 
+    "isBlueprint": true, 
+    "key": "ksovirtrecreatevirtualmachinecreate", 
+    "links": [
+        {
+            "order": 40, 
+            "stepKey": "ksovirtdeletevm"
+        }, 
+        {
+            "order": 60, 
+            "stepKey": "ksovirtcreatevm"
+        }, 
+        {
+            "order": 80, 
+            "stepKey": "ksovirtaddosdisk"
+        }, 
+        {
+            "order": 100, 
+            "stepKey": "ksovirtaddnic"
+        }, 
+        {
+            "order": 120, 
+            "stepKey": "ksovirtaddfloatingisodisk"
+        }, 
+        {
+            "order": 140, 
+            "stepKey": "ksovirtimagelotransferisotofloatingdisk"
+        }, 
+        {
+            "order": 160, 
+            "stepKey": "ksovirtloaddatastorageisointovm"
+        }, 
+        {
+            "order": 180, 
+            "stepKey": "ksovirtboottoiso"
+        }
+    ], 
+    "name": "KS oVirt Recreate Virtual Machine - Create", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

@@ -1,0 +1,15 @@
+{
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "053e2d93-c066-45eb-99ec-982d1dfd6250", 
+    "isBlueprint": true, 
+    "key": "backupovirtvms", 
+    "links": [
+        {
+            "order": 50, 
+            "stepKey": "bovlistvms"
+        }
+    ], 
+    "name": "Backup oVirt VMs", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

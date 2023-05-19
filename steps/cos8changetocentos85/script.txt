@@ -1,0 +1,1 @@
+yum config-manager --releasever 8.5

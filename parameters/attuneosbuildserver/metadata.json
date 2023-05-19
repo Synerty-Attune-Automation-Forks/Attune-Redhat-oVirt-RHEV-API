@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "934a56a3-2456-480e-9a40-1a1823f456a9", 
+    "key": "attuneosbuildserver", 
+    "name": "Attune OS Build Server", 
+    "showInPlan": false, 
+    "type": "c.s.s.b.phv.LinuxServer"
+}

@@ -1,0 +1,11 @@
+{
+    "enabled": true, 
+    "externalUuid4": "c705c96c-1999-4347-8799-081f4a7a1b5b", 
+    "interpreter": 1, 
+    "key": "ksovirtaddosdisk", 
+    "name": "KS oVirt Add OS Disk", 
+    "osCredKey": "linuxattuneuser", 
+    "serverKey": "attuneosbuildserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

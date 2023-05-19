@@ -1,0 +1,11 @@
+{
+    "enabled": true, 
+    "externalUuid4": "9ecb52a5-0d85-4d43-9eab-08a18933c9c9", 
+    "interpreter": 1, 
+    "key": "kscentos82createbinarydvd", 
+    "name": "KS CentOS82 Create Binary DVD", 
+    "osCredKey": "linuxattuneuser", 
+    "serverKey": "attuneosbuildserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "500c8271-0e0f-4850-8c6b-4f25859c7bfb", 
+    "key": "kslinuxdiskfirstletter", 
+    "name": "KS Linux: Disk First Letter", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

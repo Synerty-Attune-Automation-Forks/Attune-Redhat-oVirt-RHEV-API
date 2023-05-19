@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "74b769fb-f75a-4390-96cb-6787b68b1b8f", 
+    "key": "ovirtclustername", 
+    "name": "oVirt: Cluster Name", 
+    "showInPlan": false, 
+    "type": "c.s.s.b.phv.Text"
+}

@@ -1,0 +1,11 @@
+{
+    "enabled": true, 
+    "externalUuid4": "e6505ed6-9c0e-4b28-b870-bdcc40e49ed0", 
+    "interpreter": 1, 
+    "key": "ksovirtloaddatastorageisointovm", 
+    "name": "KS oVirt Load Data Storage ISO into VM", 
+    "osCredKey": "linuxattuneuser", 
+    "serverKey": "attuneosbuildserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

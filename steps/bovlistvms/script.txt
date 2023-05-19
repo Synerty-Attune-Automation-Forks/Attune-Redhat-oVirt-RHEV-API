@@ -1,0 +1,66 @@
+echo "h"
+
+export PATH=~/ks_ovirt_py_venv/bin:$PATH
+
+python3 <<"EOF"
+import logging
+import time
+import sys
+
+import pprint
+
+import ovirtsdk4 as sdk
+import ovirtsdk4.types as types
+
+import re
+
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger("Attune")
+
+# This example will connect to the server, search for a VM by name and
+# remove it:
+
+# Create the connection to the server:
+connection = sdk.Connection(
+    url='https://{ovirtEngineServer.fqn}/ovirt-engine/api',
+    username='{ovirtEngineApiUser.user}',
+    password='{ovirtEngineApiUser.password}',
+    insecure=True,
+    debug=True,
+    log=logger,
+)
+logger.info("Connection Successful")
+
+# Find the service that manages VMs:
+logger.info("Getting system_service")
+system_service = connection.system_service()
+
+logger.info("Getting vms_service")
+vms_service = system_service.vms_service()
+
+# Find the VM:
+logger.info("Searching for VM 'name={ovirtVmSearchString}'")
+
+try:
+    # Find the VMs:
+    vm_list = vms_service.list(search='name={ovirtVmSearchString}')
+    
+    number_vms = len(vm_list)
+    print("number_vms = " + str(number_vms))
+    
+    i = 0
+    for vm in vm_list:
+        name = vm.name
+
+        print("%s. %s" %(i, name))
+            
+        i += 1
+        
+except IndexError:
+    logger.info("VM must not exist yet")
+    exit(0)
+
+# Close the connection to the server:
+connection.close()
+
+EOF

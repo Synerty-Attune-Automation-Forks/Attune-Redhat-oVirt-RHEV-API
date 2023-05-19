@@ -1,0 +1,11 @@
+{
+    "enabled": true, 
+    "externalUuid4": "3575e7f7-9ed0-4cd7-a07b-fba2a6666cff", 
+    "interpreter": 1, 
+    "key": "ksovirtboottoiso", 
+    "name": "KS oVirt Boot to ISO", 
+    "osCredKey": "linuxattuneuser", 
+    "serverKey": "attuneosbuildserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

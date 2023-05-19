@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "30baee4d-903f-4adb-8050-9942946fa7db", 
+    "key": "ovirtmemorysize", 
+    "name": "oVirt: Memory Size", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

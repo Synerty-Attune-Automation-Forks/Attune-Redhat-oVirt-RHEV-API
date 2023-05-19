@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "a5cca6dd-0671-4766-aabe-edf1fc5e4325", 
+    "key": "ovirtvmsearchstring", 
+    "name": "oVirt: VM Search String", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

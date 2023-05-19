@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "b6b98d07-8c52-4aab-bec6-7b47cd9b477b", 
+    "key": "targetserverlin", 
+    "name": "Target Server: Lin", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.LinuxServer"
+}
