@@ -102,7 +102,7 @@ for line in vm_names_file:
       now = datetime.now()
       dt_string = now.strftime("%Y%m%d_%H%M")
 
-      description="Snapshotted from Attune %s at %s" % ("{attuneOsBuildServer.fqn}", dt_string)
+      description="Snapshotted %s from Attune %s at %s" % (name, "{attuneOsBuildServer.fqn}", dt_string)
 
       # Add the new snapshot.
       #
