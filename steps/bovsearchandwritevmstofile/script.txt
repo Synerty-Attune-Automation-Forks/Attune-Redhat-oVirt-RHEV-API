@@ -41,7 +41,7 @@ os.chdir("tmp")
 cwd = os.getcwd()
 print("cwd = %s" % cwd)
 
-vm_names_file_name = "vm_names.txt"
+vm_names_file_name = "{ovirtUniqueFileName}"
 vm_names_file = open(vm_names_file_name, "w")
 
 try:
@@ -60,6 +60,8 @@ try:
         vm_names_file.write("%s,%s\n" % (name, vm.id))
             
         i += 1
+        
+    print("Written to %s/%s." % (cwd, vm_names_file_name))
         
     vm_names_file.close()
 

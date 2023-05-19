@@ -55,7 +55,7 @@ def waitForSnapshotToFinish(snapshots_service, description, timeout_seconds):
 os.chdir("tmp")
 cwd = os.getcwd()
 
-vm_names_file_name = "vm_names.txt"
+vm_names_file_name = "{ovirtUniqueFileName}"
 vm_names_file = open(vm_names_file_name, "r")
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -90,40 +90,39 @@ for line in vm_names_file:
     name = tokens[0].strip()
     id = tokens[1].strip()
     
-    if i == 0:
-        print("name = [%s], id = [%s]" % (name, id))
+    print("name = [%s], id = [%s]" % (name, id))
 
-        logger.info("Getting VM Service for VM ID=%s" % id)
-        vm_service = vms_service.vm_service(id)
+    logger.info("Getting VM Service for VM ID=%s" % id)
+    vm_service = vms_service.vm_service(id)
 
-        try:
-          logger.info("Getting snapshots_service for VM ID=%s" % id)
-          snapshots_service = vm_service.snapshots_service()
+    try:
+      logger.info("Getting snapshots_service for VM ID=%s" % id)
+      snapshots_service = vm_service.snapshots_service()
 
-          now = datetime.now()
-          dt_string = now.strftime("%Y%m%d_%H%M")
+      now = datetime.now()
+      dt_string = now.strftime("%Y%m%d_%H%M")
 
-          description="Snapshotted from Attune at %s" % dt_string
+      description="Snapshotted from Attune %s at %s" % ("{attuneOsBuildServer.fqn}", dt_string)
 
-          # Add the new snapshot.
-          #
-          # By default:
-          # 1. Persist_memorystate is true.
-          # 2. All disks are snapshotted.
-          snapshots_service.add(
-              types.Snapshot(
-                  description=description
-              ),
-          )
+      # Add the new snapshot.
+      #
+      # By default:
+      # 1. Persist_memorystate is true.
+      # 2. All disks are snapshotted.
+      snapshots_service.add(
+          types.Snapshot(
+              description=description
+          ),
+      )
 
-          waitForSnapshotToFinish(snapshots_service, description, timeout_seconds)
+      waitForSnapshotToFinish(snapshots_service, description, timeout_seconds)
 
-          snapshots = snapshots_service.list()
+      snapshots = snapshots_service.list()
 
-        except Exception as e:
-          logger.info("Can't create snapshot for VM: %s", name)
-          logger.info("DEBUG: %s", e)
-          exit(1)
+    except Exception as e:
+      logger.info("Can't create snapshot for VM: %s", name)
+      logger.info("DEBUG: %s", e)
+      exit(1)
 
     i += 1
 

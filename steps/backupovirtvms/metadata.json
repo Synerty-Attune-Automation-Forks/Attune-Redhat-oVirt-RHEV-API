@@ -16,6 +16,10 @@
         {
             "order": 100, 
             "stepKey": "bovexportvmstoova"
+        }, 
+        {
+            "order": 150, 
+            "stepKey": "bovremovefile"
         }
     ], 
     "name": "Backup oVirt VMs", 

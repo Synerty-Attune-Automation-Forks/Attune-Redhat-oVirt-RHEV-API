@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "78971fc3-0f52-4eb0-b3d6-896637b173f2", 
+    "key": "ovirtuniquefilename", 
+    "name": "oVirt: Unique File Name", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

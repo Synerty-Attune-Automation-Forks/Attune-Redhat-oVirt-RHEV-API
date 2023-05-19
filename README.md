@@ -140,6 +140,9 @@ For example, the server being built if the procedure is building a server. |
 | KS Linux: Disk First Letter | Text | `kslinuxdiskfirstletter` | The first letter of the disk in Linux, EG, sda or xda |
 | oVirt: VM Search String | Text | `ovirtvmsearchstring` | Use * for the match any character any number of times wildcard.
 For example to match all VM names starting with "ko1vs" use the search string "ko1vs*". |
+| oVirt: Unique File Name | Text | `ovirtuniquefilename` | A unique filename to write the VMs found to snapshot.
+This is in the folder "/home/attune/tmp/".
+Making this unique for each job means we can run multiple snapshot jobs at the same time. |
 
 
 
