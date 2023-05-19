@@ -1,0 +1,11 @@
+{
+    "enabled": true, 
+    "externalUuid4": "cda871f5-03df-4665-a286-82bdba2b239c", 
+    "interpreter": 1, 
+    "key": "bovcreatetemporarydirectory", 
+    "name": "BOV Create Temporary Directory", 
+    "osCredKey": "linuxattuneuser", 
+    "serverKey": "attuneosbuildserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

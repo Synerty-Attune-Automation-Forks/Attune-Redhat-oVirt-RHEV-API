@@ -6,8 +6,12 @@
     "key": "backupovirtvms", 
     "links": [
         {
+            "order": 0, 
+            "stepKey": "bovcreatetemporarydirectory"
+        }, 
+        {
             "order": 50, 
-            "stepKey": "bovlistvms"
+            "stepKey": "bovsearchandwritevmstofile"
         }
     ], 
     "name": "Backup oVirt VMs", 
