@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "4f91b747-36bd-4654-b2d2-baca63494365", 
+    "key": "ovirthostserver", 
+    "name": "oVirt: Host Server", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.LinuxServer"
+}

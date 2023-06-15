@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "2eaa7774-3254-4a7f-8b3d-f945945abf7f", 
+    "key": "ovirtdestinationhost", 
+    "name": "oVirt: Destination Host", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.LinuxServer"
+}

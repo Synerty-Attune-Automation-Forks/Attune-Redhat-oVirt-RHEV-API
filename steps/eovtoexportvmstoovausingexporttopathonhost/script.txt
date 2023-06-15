@@ -1,0 +1,95 @@
+export PATH=~/ks_ovirt_py_venv/bin:$PATH
+
+python3 <<"EOF"
+import logging
+import os
+import time
+import sys
+
+import ovirtsdk4 as sdk
+import ovirtsdk4.types as types
+
+def waitForJobsToFinish(connection, logger):
+  jobs_service = connection.system_service().jobs_service()
+  jobs = jobs_service.list()
+
+  for job in jobs:
+    logger.info("%s, %s" % (job.id, job.description))
+    while job.status == types.JobStatus.STARTED:
+      time.sleep(10)
+      job = jobs_service.job_service(job.id).get()
+      logger.info('job-status: %s' % (job.status))
+      
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger("Attune")
+
+os.chdir("tmp")
+cwd = os.getcwd()
+
+vm_names_file_name = "{ovirtUniqueFileName}"
+logger.info("vm_names_file_name=[%s]" % vm_names_file_name)
+
+# Create the connection to the server:
+connection = sdk.Connection(
+    url='https://{ovirtEngineServer.fqn}/ovirt-engine/api',
+    username='{ovirtEngineApiUser.user}',
+    password='{ovirtEngineApiUser.password}',
+    insecure=True,
+    debug=True,
+    log=logger,
+)
+logger.info("Connection Successful")
+
+logger.info("Getting hosts_service")
+hosts_service = connection.system_service().hosts_service()
+
+ovirtHostServer="site1ovh1.site1.synerty.com"
+logger.info("ovirtHostServer=%s", ovirtHostServer)
+
+# Find the host:
+host = hosts_service.list(search='name=' + ovirtHostServer)[0]
+logger.info("host = %s, %s" % (host.id, host.name))
+
+# Find the service that manages the host:
+host_service = hosts_service.host_service(host.id)
+
+# Find the service that manages VMs:
+logger.info("Getting system_service")
+system_service = connection.system_service()
+
+logger.info("Getting vms_service")
+vms_service = system_service.vms_service()
+
+vm_names_file_name = "{ovirtUniqueFileName}"
+vm_names_file = open(vm_names_file_name, "r")
+
+i = 0;    
+for line in vm_names_file:
+    logger.info("%s. %s" %(i, line))
+    
+    tokens = line.split(",")
+    
+    # we need strip() to remove spaces and newlines around the tokens
+    name = tokens[0].strip()
+    id = tokens[1].strip()
+    
+    logger.info("name = [%s], id = [%s]" % (name, id))
+
+    logger.info("Getting VM Service for VM ID=%s" % id)
+    vm_service = vms_service.vm_service(id)
+    
+    # Check that there are no running jobs.
+    waitForJobsToFinish(connection, logger)
+    
+    vm_service.export_to_path_on_host(
+        host=types.Host(id=host.id),
+        directory='{ovaExportPath}',
+        exclusive=True,
+        filename=('%s.ova' % (name)),
+        wait=True,
+    )
+    
+    # Wait for the export to finish.
+    waitForJobsToFinish(connection, logger)
+    
+EOF

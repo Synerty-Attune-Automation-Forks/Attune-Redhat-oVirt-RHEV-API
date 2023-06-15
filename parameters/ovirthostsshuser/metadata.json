@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "662a1d5c-3ca5-44dc-84eb-926e674b4efb", 
+    "key": "ovirthostsshuser", 
+    "name": "oVirt: Host SSH User", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.LinOsCred"
+}

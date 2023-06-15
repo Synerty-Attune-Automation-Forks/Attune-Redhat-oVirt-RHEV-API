@@ -49,7 +49,7 @@ try:
     vm_list = vms_service.list(search='name={ovirtVmSearchString}')
     
     number_vms = len(vm_list)
-    print("number_vms = " + str(number_vms))
+    logger.info("number_vms = " + str(number_vms))
     
     i = 0
     for vm in vm_list:
@@ -61,7 +61,7 @@ try:
             
         i += 1
         
-    print("Written to %s/%s." % (cwd, vm_names_file_name))
+    logger.info("Written to %s/%s." % (cwd, vm_names_file_name))
         
     vm_names_file.close()
 

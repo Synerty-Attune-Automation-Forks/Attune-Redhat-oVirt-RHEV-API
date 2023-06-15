@@ -1,0 +1,17 @@
+whoami
+pwd
+cd /vm_local/ova
+ls
+
+for ova_name in $(ls -Sr *.ova)
+do
+   echo "Converting$(ls -lh $ova_name)"
+   was=$(ls -lh $ova_name)
+   
+   7z a -mmt10 ${ova_name}.7z $ova_name
+   
+   rm -f ${ova_name}
+   
+   echo "Reduced size from ${was} to $(ls -lh ${ova_name}.7z)"
+   
+done

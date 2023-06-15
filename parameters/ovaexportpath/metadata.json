@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "d98f2474-8248-442b-bb16-c1a771dcd565", 
+    "key": "ovaexportpath", 
+    "name": "OVA Export Path", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

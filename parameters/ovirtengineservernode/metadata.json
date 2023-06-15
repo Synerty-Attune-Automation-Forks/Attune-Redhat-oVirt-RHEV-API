@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "c6d63a24-0cb6-4742-82f3-792fe08b24c1", 
+    "key": "ovirtengineservernode", 
+    "name": "ovirt: Engine Server Node", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.LinuxServer"
+}

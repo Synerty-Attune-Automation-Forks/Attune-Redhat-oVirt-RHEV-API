@@ -1,0 +1,12 @@
+{
+    "enabled": true, 
+    "externalUuid4": "43fa844b-cc13-4f5c-8832-ff2ba36b29bf", 
+    "interpreter": 1, 
+    "key": "eovtorsync7zippedovafiles", 
+    "name": "EOVTO Rsync 7zipped OVA Files", 
+    "osCredKey": "ovirthostsshuser", 
+    "promptResponses": "{ovirtHostSshUser.user}@{ovirtDestinationHost.ip}'s password: ==={ovirtHostSshUser.password}", 
+    "serverKey": "ovirthostserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshPromptedTuple"
+}

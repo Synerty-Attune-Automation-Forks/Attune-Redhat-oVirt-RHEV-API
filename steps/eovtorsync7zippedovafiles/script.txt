@@ -1,0 +1,11 @@
+OVA_DIR="/vm_local/ova/"
+cd "${OVA_DIR}"
+
+rsync \
+    --archive \
+    --verbose \
+    --progress \
+    --partial \
+    --dry-run \
+    ./ \
+    "{ovirtHostSshUser.user}@{ovirtDestinationHost.ip}:{OVA_DIR}"

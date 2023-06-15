@@ -1,9 +1,9 @@
 {
     "enabled": true, 
-    "externalUuid4": "cda871f5-03df-4665-a286-82bdba2b239c", 
+    "externalUuid4": "7594a96d-fb9a-4358-8eb0-ea610b746d67", 
     "interpreter": 1, 
-    "key": "bovcreatetemporarydirectory", 
-    "name": "BOV Create Temporary Directory", 
+    "key": "eovtoremovevmsfile", 
+    "name": "EOVTO Remove VMs File", 
     "osCredKey": "linuxattuneuser", 
     "serverKey": "attuneosbuildserver", 
     "successExitCode": 0, 

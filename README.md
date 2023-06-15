@@ -98,13 +98,13 @@ This Project contains the following Blueprints.
 
 
 
+### Export oVirt VMs to OVA
+
+
 ### Kickstart CentOS82+oVirt
 
 
 ### KS oVirt Recreate Virtual Machine - Create
-
-
-### Backup oVirt VMs
 
 
 
@@ -116,33 +116,41 @@ This Project contains the following Blueprints.
 | Name | Type | Script Reference | Comment |
 | ---- | ---- | ---------------- | ------- |
 | Attune OS Build Server | Linux/Unix Node | `attuneosbuildserver` | This variable is used in the "Kickstart" build procedures, so the "Attune Server" can be used to build Attune servers. |
-| oVirt: Network Name | Text | `ovirtnetworkname` | None |
+| KS Linux: Disk First Letter | Text | `kslinuxdiskfirstletter` | The first letter of the disk in Linux, EG, sda or xda |
+| KS VMWare: Attune Base Dir | Text | `ksvmwareattunebasedir` | None |
 | Linux: Attune User | Linux/Unix Credential | `linuxattuneuser` | None |
-| oVirt: NIC Interface | Text | `ovirtnicinterface` | E1000 for Windows
-VIRTIO for Linux |
+| Linux: Root User | Linux/Unix Credential | `linuxrootuser` | None |
+| oVirt: Cluster Name | Text | `ovirtclustername` | None |
+| oVirt: CPU Count | Text | `ovirtcpucount` | None |
 | oVirt: Disk Interface | Text | `ovirtdiskinterface` | SATA or IDE required for Windows
 VIRTIO_SCSI for windows after driver install
 VIRTIO for Linux |
-| oVirt: CPU Count | Text | `ovirtcpucount` | None |
-| Target Server: Lin | Linux/Unix Node | `targetserverlin` | The target server is a generic placeholder, usually used for the server a script will run on.
-For example, the server being built if the procedure is building a server. |
-| Linux: Root User | Linux/Unix Credential | `linuxrootuser` | None |
-| oVirt: Memory Size | Text | `ovirtmemorysize` | None |
 | oVirt: Disk Storage Name | Text | `ovirtdiskstoragename` | None |
-| Target Server: Linux TimeZone | Text | `targetserverlinuxtimezone` | None |
-| oVirt: Cluster Name | Text | `ovirtclustername` | None |
-| Target Subnet | Network IPv4 Subnet | `targetsubnet` | None |
-| oVirt: TimeZone | Text | `ovirttimezone` | None |
-| oVirt: Engine Server | Basic Node | `ovirtengineserver` | None |
-| KS VMWare: Attune Base Dir | Text | `ksvmwareattunebasedir` | None |
-| Target Server | Basic Node | `targetserver` | None |
 | oVirt: Engine API User | Basic Credential | `ovirtengineapiuser` | None |
-| KS Linux: Disk First Letter | Text | `kslinuxdiskfirstletter` | The first letter of the disk in Linux, EG, sda or xda |
-| oVirt: VM Search String | Text | `ovirtvmsearchstring` | Use * for the match any character any number of times wildcard.
-For example to match all VM names starting with "ko1vs" use the search string "ko1vs*". |
+| oVirt: Engine Server | Basic Node | `ovirtengineserver` | None |
+| oVirt: Memory Size | Text | `ovirtmemorysize` | None |
+| oVirt: Network Name | Text | `ovirtnetworkname` | None |
+| oVirt: NIC Interface | Text | `ovirtnicinterface` | E1000 for Windows
+VIRTIO for Linux |
+| oVirt: TimeZone | Text | `ovirttimezone` | None |
 | oVirt: Unique File Name | Text | `ovirtuniquefilename` | A unique filename to write the VMs found to snapshot.
 This is in the folder "/home/attune/tmp/".
 Making this unique for each job means we can run multiple snapshot jobs at the same time. |
+| oVirt: VM Search String | Text | `ovirtvmsearchstring` | Matches for the VM name.
+Use * for the match any character any number of times wildcard.
+Examples:
+1. For an exact match use the exact name of the VM: "ko1vs3.ko1.synerty.com".
+2. To match all VM names starting with "ko1vs" use the search string with the wildcard "ko1vs*". |
+| Target Server | Basic Node | `targetserver` | None |
+| Target Server: Lin | Linux/Unix Node | `targetserverlin` | The target server is a generic placeholder, usually used for the server a script will run on.
+For example, the server being built if the procedure is building a server. |
+| Target Server: Linux TimeZone | Text | `targetserverlinuxtimezone` | None |
+| Target Subnet | Network IPv4 Subnet | `targetsubnet` | None |
+| ovirt: Engine Server Node | Linux/Unix Node | `ovirtengineservernode` | None |
+| OVA Export Path | Text | `ovaexportpath` | None |
+| oVirt: Host Server | Linux/Unix Node | `ovirthostserver` | None |
+| oVirt: Host SSH User | Linux/Unix Credential | `ovirthostsshuser` | None |
+| oVirt: Destination Host | Linux/Unix Node | `ovirtdestinationhost` | Destination oVirt host to copy the 7zipped OVAs to. |
 
 
 
