@@ -6,6 +6,5 @@ rsync \
     --verbose \
     --progress \
     --partial \
-    --dry-run \
     ./ \
-    "{ovirtHostSshUser.user}@{ovirtDestinationHost.ip}:{OVA_DIR}"
+    "{ovirtHostSshUser.user}@{ovirtDestinationHost.ip}:${OVA_DIR}"

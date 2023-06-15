@@ -120,14 +120,19 @@ This Project contains the following Blueprints.
 | KS VMWare: Attune Base Dir | Text | `ksvmwareattunebasedir` | None |
 | Linux: Attune User | Linux/Unix Credential | `linuxattuneuser` | None |
 | Linux: Root User | Linux/Unix Credential | `linuxrootuser` | None |
+| OVA Export Path | Text | `ovaexportpath` | None |
 | oVirt: Cluster Name | Text | `ovirtclustername` | None |
 | oVirt: CPU Count | Text | `ovirtcpucount` | None |
+| oVirt: Destination Host | Linux/Unix Node | `ovirtdestinationhost` | Destination oVirt host to copy the 7zipped OVAs to. |
 | oVirt: Disk Interface | Text | `ovirtdiskinterface` | SATA or IDE required for Windows
 VIRTIO_SCSI for windows after driver install
 VIRTIO for Linux |
 | oVirt: Disk Storage Name | Text | `ovirtdiskstoragename` | None |
 | oVirt: Engine API User | Basic Credential | `ovirtengineapiuser` | None |
 | oVirt: Engine Server | Basic Node | `ovirtengineserver` | None |
+| ovirt: Engine Server Node | Linux/Unix Node | `ovirtengineservernode` | None |
+| oVirt: Host Server | Linux/Unix Node | `ovirthostserver` | None |
+| oVirt: Host SSH User | Linux/Unix Credential | `ovirthostsshuser` | None |
 | oVirt: Memory Size | Text | `ovirtmemorysize` | None |
 | oVirt: Network Name | Text | `ovirtnetworkname` | None |
 | oVirt: NIC Interface | Text | `ovirtnicinterface` | E1000 for Windows
@@ -146,11 +151,6 @@ Examples:
 For example, the server being built if the procedure is building a server. |
 | Target Server: Linux TimeZone | Text | `targetserverlinuxtimezone` | None |
 | Target Subnet | Network IPv4 Subnet | `targetsubnet` | None |
-| ovirt: Engine Server Node | Linux/Unix Node | `ovirtengineservernode` | None |
-| OVA Export Path | Text | `ovaexportpath` | None |
-| oVirt: Host Server | Linux/Unix Node | `ovirthostserver` | None |
-| oVirt: Host SSH User | Linux/Unix Credential | `ovirthostsshuser` | None |
-| oVirt: Destination Host | Linux/Unix Node | `ovirtdestinationhost` | Destination oVirt host to copy the 7zipped OVAs to. |
 
 
 
