@@ -1,4 +1,5 @@
 OVA_DIR="/vm_local/ova/"
+
 cd "${OVA_DIR}"
 echo "Original files in ${OVA_DIR}"
 ls -lh
@@ -24,19 +25,9 @@ do
             # The 0th token is the VM Name
             
             # Buld up the 7zipped OVA file name
-            OVA_NAME="${word}.ova"
-            if [[ -f "${OVA_NAME}" ]]
-            then
-                echo "Converting$(ls -lh ${OVA_NAME})"
-                WAS=$(ls -lh "${OVA_NAME}")
-                
-                7z a -mmt10 "${OVA_NAME}.7z" "${OVA_NAME}"
-                
-                rm -vf "${OVA_NAME}"
-                
-                echo "Reduced size from ${WAS} to $(ls -lh ${OVA_NAME}.7z)"
-            fi
+            OVA_ZIPPED_FILE_NAME="${word}.ova.7z"
             
+            rm -vf "${OVA_ZIPPED_FILE_NAME}"
         fi
     
         let "WORD_NUMBER=WORD_NUMBER+1"

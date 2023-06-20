@@ -1,3 +1,0 @@
-cd ~/tmp
-echo "We are in `pwd`"
-rm -vf "{ovirtUniqueFileName}"

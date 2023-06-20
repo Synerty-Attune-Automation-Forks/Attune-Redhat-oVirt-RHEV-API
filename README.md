@@ -42,52 +42,8 @@ You can learn more about Attune through
 
 # Clone this Project
 
-Clone this project into your own instance of Attune.
-
-<img src="https://www.servertribe.com/wp-content/uploads/2023/02/Attune-clone-new-project-01.png" alt="clone a new project"/>
-
----
-
-Paste the GIT repository URL into Attune and Select Clone.
-
-<img src="https://www.servertribe.com/wp-content/uploads/2023/02/Attune-clone-new-project-02.png" alt="clone a new project"/>
-
----
-
-**Now that this project is in your Attune instance you can begin creating
-Jobs.**
-
-Navigate to the Plan workspace and create a Job from a Blueprint in the
-Project you cloned.
-
-<img src="https://www.servertribe.com/wp-content/uploads/2023/02/Attune-plan-new-job-11.png" alt="plan a new job"/>
-
----
-
-Configure the Parameters for the Job you created. Create the Values you're
-missing in the next step.
-
-<img src="https://www.servertribe.com/wp-content/uploads/2023/02/Attune-plan-new-job-12.png" alt="plan a new job"/>
-
----
-
-Create the Values required to fill the Parameters for the Job.
-
-<img src="https://www.servertribe.com/wp-content/uploads/2023/02/Attune-plan-new-job-13-1.png" alt="plan a new job"/>
-
----
-
-Run your Job.
-
-<img src="https://www.servertribe.com/wp-content/uploads/2023/02/Attune-run-job-01.png" alt="run your job"/>
-
----
-
-**Congratulations, you’ve run a cloned project.**
-
-If you need further assistance, please explore our help.
-
-<img width=200 src="https://www.servertribe.com/wp-content/uploads/2023/02/Attune-get-help-01.png" alt="get help"/>
+To clone this project into your own instance of Attune, follow the
+[Clone a GIT Project How To Instructions](https://servertribe-attune.readthedocs.io/en/latest/howto/design_workspace/clone_project.html).
 
 
 
@@ -117,46 +73,35 @@ This Project contains the following Blueprints.
 | ---- | ---- | ---------------- | ------- |
 | Attune OS Build Server | Linux/Unix Node | `attuneosbuildserver` | This variable is used in the "Kickstart" build procedures, so the "Attune Server" can be used to build Attune servers. |
 | KS Linux: Disk First Letter | Text | `kslinuxdiskfirstletter` | The first letter of the disk in Linux, EG, sda or xda |
-| KS VMWare: Attune Base Dir | Text | `ksvmwareattunebasedir` | None |
-| Linux: Attune User | Linux/Unix Credential | `linuxattuneuser` | None |
-| Linux: Root User | Linux/Unix Credential | `linuxrootuser` | None |
-| OVA Export Path | Text | `ovaexportpath` | None |
-| oVirt: Cluster Name | Text | `ovirtclustername` | None |
-| oVirt: CPU Count | Text | `ovirtcpucount` | None |
+| KS VMWare: Attune Base Dir | Text | `ksvmwareattunebasedir` |  |
+| Linux: Attune User | Linux/Unix Credential | `linuxattuneuser` |  |
+| Linux: Root User | Linux/Unix Credential | `linuxrootuser` |  |
+| OVA Export Path | Text | `ovaexportpath` |  |
+| oVirt: Cluster Name | Text | `ovirtclustername` |  |
+| oVirt: CPU Count | Text | `ovirtcpucount` |  |
 | oVirt: Destination Host | Linux/Unix Node | `ovirtdestinationhost` | Destination oVirt host to copy the 7zipped OVAs to. |
-| oVirt: Disk Interface | Text | `ovirtdiskinterface` | SATA or IDE required for Windows
-VIRTIO_SCSI for windows after driver install
-VIRTIO for Linux |
-| oVirt: Disk Storage Name | Text | `ovirtdiskstoragename` | None |
-| oVirt: Engine API User | Basic Credential | `ovirtengineapiuser` | None |
-| oVirt: Engine Server | Basic Node | `ovirtengineserver` | None |
-| ovirt: Engine Server Node | Linux/Unix Node | `ovirtengineservernode` | None |
-| oVirt: Host Server | Linux/Unix Node | `ovirthostserver` | None |
-| oVirt: Host SSH User | Linux/Unix Credential | `ovirthostsshuser` | None |
-| oVirt: Memory Size | Text | `ovirtmemorysize` | None |
-| oVirt: Network Name | Text | `ovirtnetworkname` | None |
-| oVirt: NIC Interface | Text | `ovirtnicinterface` | E1000 for Windows
-VIRTIO for Linux |
-| oVirt: TimeZone | Text | `ovirttimezone` | None |
-| oVirt: Unique File Name | Text | `ovirtuniquefilename` | A unique filename to write the VMs found to snapshot.
-This is in the folder "/home/attune/tmp/".
-Making this unique for each job means we can run multiple snapshot jobs at the same time. |
-| oVirt: VM Search String | Text | `ovirtvmsearchstring` | Matches for the VM name.
-Use * for the match any character any number of times wildcard.
-Examples:
-1. For an exact match use the exact name of the VM: "ko1vs3.ko1.synerty.com".
-2. To match all VM names starting with "ko1vs" use the search string with the wildcard "ko1vs*". |
-| Target Server | Basic Node | `targetserver` | None |
-| Target Server: Lin | Linux/Unix Node | `targetserverlin` | The target server is a generic placeholder, usually used for the server a script will run on.
-For example, the server being built if the procedure is building a server. |
-| Target Server: Linux TimeZone | Text | `targetserverlinuxtimezone` | None |
-| Target Subnet | Network IPv4 Subnet | `targetsubnet` | None |
+| oVirt: Disk Interface | Text | `ovirtdiskinterface` | SATA or IDE required for Windows<br>VIRTIO_SCSI for windows after driver install<br>VIRTIO for Linux |
+| oVirt: Disk Storage Name | Text | `ovirtdiskstoragename` |  |
+| oVirt: Engine API User | Basic Credential | `ovirtengineapiuser` |  |
+| oVirt: Engine Server | Basic Node | `ovirtengineserver` |  |
+| ovirt: Engine Server Node | Linux/Unix Node | `ovirtengineservernode` |  |
+| oVirt: Host Server | Linux/Unix Node | `ovirthostserver` |  |
+| oVirt: Host SSH User | Linux/Unix Credential | `ovirthostsshuser` |  |
+| oVirt: Memory Size | Text | `ovirtmemorysize` |  |
+| oVirt: Network Name | Text | `ovirtnetworkname` |  |
+| oVirt: NIC Interface | Text | `ovirtnicinterface` | E1000 for Windows<br>VIRTIO for Linux |
+| oVirt: TimeZone | Text | `ovirttimezone` |  |
+| oVirt: Unique File Name | Text | `ovirtuniquefilename` | A unique filename to write the VMs found to snapshot.<br>This is in the folder "/home/attune/tmp/".<br>Making this unique for each job means we can run multiple snapshot jobs at the same time. |
+| oVirt: VM Search String | Text | `ovirtvmsearchstring` | Matches for the VM name.<br>Use * for the match any character any number of times wildcard.<br>Examples:<br>1. For an exact match use the exact name of the VM: "ko1vs3.ko1.synerty.com".<br>2. To match all VM names starting with "ko1vs" use the search string with the wildcard "ko1vs*". |
+| Target Server | Basic Node | `targetserver` |  |
+| Target Server: Lin | Linux/Unix Node | `targetserverlin` | The target server is a generic placeholder, usually used for the server a script will run on.<br>For example, the server being built if the procedure is building a server. |
+| Target Server: Linux TimeZone | Text | `targetserverlinuxtimezone` |  |
+| Target Subnet | Network IPv4 Subnet | `targetsubnet` |  |
 
 
 
 
 ## Files
-
 
 | Name | Type | Comment |
 | ---- | ---- | ------- |

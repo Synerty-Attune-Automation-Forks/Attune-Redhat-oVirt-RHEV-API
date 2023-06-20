@@ -1,0 +1,5 @@
+cd /tmp
+echo "We are in `pwd`"
+
+FILE="{ovirtUniqueFileName}"
+[[ -f ${FILE} ]] && rm -fv ${FILE} || echo "No file to remove."

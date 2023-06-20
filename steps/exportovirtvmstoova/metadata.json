@@ -19,15 +19,23 @@
         }, 
         {
             "order": 150, 
+            "stepKey": "eovtocopyvmlistsfiletosourceovirthost"
+        }, 
+        {
+            "order": 250, 
             "stepKey": "eovto7zipovafiles"
         }, 
         {
-            "order": 200, 
-            "stepKey": "eovtorsync7zippedovafiles"
+            "order": 350, 
+            "stepKey": "eovtoremove7zippedovafilesfromsourceovirthost"
         }, 
         {
-            "order": 300, 
-            "stepKey": "eovtoremovevmsfile"
+            "order": 400, 
+            "stepKey": "eovtoremovevmlistsfileonsourceovirt"
+        }, 
+        {
+            "order": 450, 
+            "stepKey": "eovtoremovevmlistsfileonattune"
         }
     ], 
     "name": "Export oVirt VMs to OVA", 

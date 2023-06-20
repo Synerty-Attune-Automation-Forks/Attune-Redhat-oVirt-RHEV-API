@@ -1,0 +1,12 @@
+USER_AT_HOST="{ovirtHostSshUser.user}@{ovirtHostServer.ip}"
+
+FROM="${HOME}/tmp/{ovirtUniqueFileName}"
+ls -lh "${FROM}"
+TO="/tmp"
+
+scp -p \
+    -o StrictHostKeyChecking=no \
+    -o UserKnownHostsFile=/dev/null \
+    -o  PreferredAuthentications=password \
+    "${FROM}" \
+    ${USER_AT_HOST}:${TO}

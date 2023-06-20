@@ -1,0 +1,11 @@
+{
+    "enabled": true, 
+    "externalUuid4": "dac54a05-1d0a-47d2-a22d-ba585d8def9e", 
+    "interpreter": 1, 
+    "key": "eovtoremove7zippedovafilesfromsourceovirthost", 
+    "name": "EOVTO Remove 7zipped OVA Files From Source oVirt Host", 
+    "osCredKey": "ovirthostsshuser", 
+    "serverKey": "ovirthostserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

@@ -1,0 +1,12 @@
+{
+    "enabled": true, 
+    "externalUuid4": "77720079-0b8b-4144-9489-569bc16dc61a", 
+    "interpreter": 1, 
+    "key": "eovtocopyvmlistsfiletosourceovirthost", 
+    "name": "EOVTO Copy VM Lists File to Source oVirt Host", 
+    "osCredKey": "linuxattuneuser", 
+    "promptResponses": "password:==={ovirtHostSshUser.password}\nAre you sure you want to continue connecting (yes/no)?===yes\nAre you sure you want to continue connecting (yes/no/[fingerprint])?===yes", 
+    "serverKey": "attuneosbuildserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshPromptedTuple"
+}
