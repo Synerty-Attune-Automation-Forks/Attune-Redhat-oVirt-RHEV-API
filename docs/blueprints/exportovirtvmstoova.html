@@ -199,8 +199,16 @@
         
 
                     <h6 class="text-muted pt-2">
+                        <a href="#eovtorsync7zippedovafiles">
+                            <strong>Step 6 -</strong> EOVTO Rsync 7zipped OVA Files
+                        </a>
+                    </h6>
+
+        
+
+                    <h6 class="text-muted pt-2">
                         <a href="#eovtoremove7zippedovafilesfromsourceovirthost">
-                            <strong>Step 6 -</strong> EOVTO Remove 7zipped OVA Files From Source oVirt Host
+                            <strong>Step 7 -</strong> EOVTO Remove 7zipped OVA Files From Source oVirt Host
                         </a>
                     </h6>
 
@@ -208,7 +216,7 @@
 
                     <h6 class="text-muted pt-2">
                         <a href="#eovtoremovevmlistsfileonsourceovirt">
-                            <strong>Step 7 -</strong> EOVTO Remove VM Lists File on Source oVirt
+                            <strong>Step 8 -</strong> EOVTO Remove VM Lists File on Source oVirt
                         </a>
                     </h6>
 
@@ -216,7 +224,7 @@
 
                     <h6 class="text-muted pt-2">
                         <a href="#eovtoremovevmlistsfileonattune">
-                            <strong>Step 8 -</strong> EOVTO Remove VM Lists File on Attune
+                            <strong>Step 9 -</strong> EOVTO Remove VM Lists File on Attune
                         </a>
                     </h6>
 
@@ -866,9 +874,101 @@ ls -lh
 
 
                     <div class="row pt-5">
+                        <h4 id="eovtorsync7zippedovafiles">
+                            <a href="#eovtorsync7zippedovafiles">
+                                <strong>Step 6 -</strong> EOVTO Rsync 7zipped OVA Files
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div class="blueprint-description row">
+                        <p>
+                            
+                        </p>
+                    </div>
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+
+
+
+    <div class="row">
+        <p>
+            Execute the following script:
+        </p>
+    </div>
+    <div class="row">
+        <div class="col px-0">
+            <pre>
+                <code class="language-sql py-0">
+OVA_DIR=&quot;/vm_local/ova/&quot;
+cd &quot;${OVA_DIR}&quot;
+
+rsync \
+    --archive \
+    --verbose \
+    --progress \
+    --partial \
+    ./ \
+    &quot;{ovirtHostSshUser.user}@{ovirtDestinationHost.ip}:${OVA_DIR}&quot;
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <p>
+            This script may require you to answer the following prompts:
+        </p>
+    </div>
+    <div class="row">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Prompt
+                    </th>
+                    <th class="prompts">
+                        Answer
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {ovirtHostSshUser.user}@{ovirtDestinationHost.ip}'s password: 
+                    </td>
+                    <td class="prompts">
+                        <code class="language-sql">
+{ovirtHostSshUser.password}
+                        </code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+        
+
+
+
+                    <div class="row pt-5">
                         <h4 id="eovtoremove7zippedovafilesfromsourceovirthost">
                             <a href="#eovtoremove7zippedovafilesfromsourceovirthost">
-                                <strong>Step 6 -</strong> EOVTO Remove 7zipped OVA Files From Source oVirt Host
+                                <strong>Step 7 -</strong> EOVTO Remove 7zipped OVA Files From Source oVirt Host
                             </a>
                         </h4>
                     </div>
@@ -962,7 +1062,7 @@ ls -lh
                     <div class="row pt-5">
                         <h4 id="eovtoremovevmlistsfileonsourceovirt">
                             <a href="#eovtoremovevmlistsfileonsourceovirt">
-                                <strong>Step 7 -</strong> EOVTO Remove VM Lists File on Source oVirt
+                                <strong>Step 8 -</strong> EOVTO Remove VM Lists File on Source oVirt
                             </a>
                         </h4>
                     </div>
@@ -1013,7 +1113,7 @@ FILE=&quot;{ovirtUniqueFileName}&quot;
                     <div class="row pt-5">
                         <h4 id="eovtoremovevmlistsfileonattune">
                             <a href="#eovtoremovevmlistsfileonattune">
-                                <strong>Step 8 -</strong> EOVTO Remove VM Lists File on Attune
+                                <strong>Step 9 -</strong> EOVTO Remove VM Lists File on Attune
                             </a>
                         </h4>
                     </div>

@@ -26,15 +26,19 @@
             "stepKey": "eovto7zipovafiles"
         }, 
         {
+            "order": 300, 
+            "stepKey": "eovtorsync7zippedovafiles"
+        }, 
+        {
             "order": 350, 
             "stepKey": "eovtoremove7zippedovafilesfromsourceovirthost"
         }, 
         {
-            "order": 400, 
+            "order": 450, 
             "stepKey": "eovtoremovevmlistsfileonsourceovirt"
         }, 
         {
-            "order": 450, 
+            "order": 500, 
             "stepKey": "eovtoremovevmlistsfileonattune"
         }
     ], 
