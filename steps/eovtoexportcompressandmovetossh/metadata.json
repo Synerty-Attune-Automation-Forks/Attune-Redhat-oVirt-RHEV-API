@@ -1,0 +1,24 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "2a5c15a3-d35c-4b50-a4fd-207f5f49ee85", 
+    "isBlueprint": false, 
+    "key": "eovtoexportcompressandmovetossh", 
+    "links": [
+        {
+            "order": 0, 
+            "stepKey": "eovtoexportvmstoovausingexporttopathonhost"
+        }, 
+        {
+            "order": 50, 
+            "stepKey": "eovtocompressovafiles"
+        }, 
+        {
+            "order": 100, 
+            "stepKey": "eovtorsynccompressedovafilestosshstorage"
+        }
+    ], 
+    "name": "EOVTO Export, Compress and Move to SSH", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

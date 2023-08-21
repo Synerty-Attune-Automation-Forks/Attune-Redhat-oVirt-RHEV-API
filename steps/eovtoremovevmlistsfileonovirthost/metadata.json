@@ -1,9 +1,10 @@
 {
+    "actionOnStepFail": null, 
     "enabled": true, 
-    "externalUuid4": "d031b2c8-7cef-4773-bc4a-a8960dc4d198", 
+    "externalUuid4": "68d3711c-ed89-44fe-811c-0f4b48c93a39", 
     "interpreter": 1, 
-    "key": "eovto7zipovafiles", 
-    "name": "EOVTO 7zip OVA Files", 
+    "key": "eovtoremovevmlistsfileonovirthost", 
+    "name": "EOVTO Remove VM Lists File on oVirt Host", 
     "osCredKey": "ovirthostsshuser", 
     "serverKey": "ovirthostserver", 
     "successExitCode": 0, 

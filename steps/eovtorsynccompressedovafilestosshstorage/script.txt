@@ -1,0 +1,46 @@
+EXT="gz"
+OVA_DIR="{ovaExportPath}"
+
+cd "${OVA_DIR}"
+
+FILE="/tmp/{ovirtVmSearchString}"
+FILE="$(echo "$FILE" | sed 's/[*]/X/g;s/,/_/g;s/ //g;')"
+ls -l ${FILE}
+
+while IFS= read -r vmName
+do
+    if [ -z ""$vmName ]
+    then
+        continue
+    fi
+    
+    # Buld up the 7zipped OVA file name
+    OVA_COMPRESSED_FILE_NAME="${vmName}.ova.${EXT}"
+    
+    while [ ! -f "${OVA_COMPRESSED_FILE_NAME}" ]
+    do
+        echo "Waiting for ${OVA_COMPRESSED_FILE_NAME} to appear"
+        sleep 30s
+    done
+    
+    echo "Original files in ${OVA_COMPRESSED_FILE_NAME}"
+    ls -lh "${OVA_COMPRESSED_FILE_NAME}"
+    
+    
+    NEW_NAME="$(date '+%y%m%d_%H%M')_${OVA_COMPRESSED_FILE_NAME}"
+    mkdir -p ${vmName}
+    mv -v ${OVA_COMPRESSED_FILE_NAME} ${vmName}/${NEW_NAME}
+
+    rsync \
+        --archive \
+        --verbose \
+        --progress \
+        --partial \
+        ${vmName} \
+        "{ovirtHostSshUser.user}@{ovirtDestinationHost.ip}:{ovaBackupPath}"
+    
+    rm -vf "${vmName}"
+    
+done <<< $(cat ${FILE} | cut -d',' -f1)
+
+

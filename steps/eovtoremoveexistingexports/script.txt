@@ -1,0 +1,34 @@
+OVA_DIR="{ovaExportPath}"
+
+cd "${OVA_DIR}"
+
+FILE="/tmp/{ovirtVmSearchString}_vm_list.txt"
+FILE="$(echo "$FILE" | sed 's/[*]/X/g;s/,/_/g;s/ //g;')"
+
+echo "Checking VM Name List file"
+ls -l ${FILE} > /dev/null
+
+while IFS= read -r vmName
+do
+    if [ -z ""$vmName ]
+    then
+        continue
+    fi
+    
+    OVA_NAME="${vmName}.ova"
+    
+    ls -l ${OVA_NAME}* 2> /dev/null | true
+    
+    for fileToRm in ${OVA_NAME}*
+    do
+        if [ "${fileToRm}" = "${OVA_NAME}*" ]
+        then
+            echo "GOOD - No files for ${vmName} to cleanup"
+            continue
+        fi
+        
+        echo "Removing ${fileToRm}"
+        rm -vf "${fileToRm}"
+    done
+
+done <<< $(cat ${FILE} | cut -d',' -f1)

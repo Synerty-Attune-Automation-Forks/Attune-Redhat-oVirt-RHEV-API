@@ -1,0 +1,8 @@
+cd /tmp
+echo "We are in `pwd`"
+
+FILE="{ovirtVmSearchString}_vm_list.txt"
+FILE="$(echo "$FILE" | sed 's/[*]/X/g;s/,/_/g;s/ //g;')"
+
+[[ -f ${FILE} ]] && rm -fv ${FILE} || echo "No file to remove."
+

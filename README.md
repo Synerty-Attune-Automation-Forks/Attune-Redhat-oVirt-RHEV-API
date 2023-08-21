@@ -54,7 +54,10 @@ This Project contains the following Blueprints.
 
 
 
-### Export oVirt VMs to OVA
+### Export oVirt VMs to OVA to Local Mount
+
+
+### Export oVirt VMs to OVA to SSH Storage
 
 
 ### Kickstart CentOS82+oVirt
@@ -72,11 +75,14 @@ This Project contains the following Blueprints.
 | Name | Type | Script Reference | Comment |
 | ---- | ---- | ---------------- | ------- |
 | Attune OS Build Server | Linux/Unix Node | `attuneosbuildserver` | This variable is used in the "Kickstart" build procedures, so the "Attune Server" can be used to build Attune servers. |
+| Backup Rotate Keep Days | Text | `backuprotatekeepdays` | A space separated list of numbers, representing the age of backups to keep in days.<br>Example: 1, 3, 7, 14, 28<br>One newest backup for today is always kept. |
 | KS Linux: Disk First Letter | Text | `kslinuxdiskfirstletter` | The first letter of the disk in Linux, EG, sda or xda |
 | KS VMWare: Attune Base Dir | Text | `ksvmwareattunebasedir` |  |
 | Linux: Attune User | Linux/Unix Credential | `linuxattuneuser` |  |
 | Linux: Root User | Linux/Unix Credential | `linuxrootuser` |  |
-| OVA Export Path | Text | `ovaexportpath` |  |
+| Max Concurrent OVA Exports | Text | `maxconcurrentovaexports` |  |
+| OVA Backup Path | Text | `ovabackuppath` | The local path where the OVA will end up. |
+| OVA Export Path | Text | `ovaexportpath` | A temporary location where the OVA will be exported to and then 7zipped |
 | oVirt: Cluster Name | Text | `ovirtclustername` |  |
 | oVirt: CPU Count | Text | `ovirtcpucount` |  |
 | oVirt: Destination Host | Linux/Unix Node | `ovirtdestinationhost` | Destination oVirt host to copy the 7zipped OVAs to. |
@@ -92,7 +98,7 @@ This Project contains the following Blueprints.
 | oVirt: NIC Interface | Text | `ovirtnicinterface` | E1000 for Windows<br>VIRTIO for Linux |
 | oVirt: TimeZone | Text | `ovirttimezone` |  |
 | oVirt: Unique File Name | Text | `ovirtuniquefilename` | A unique filename to write the VMs found to snapshot.<br>This is in the folder "/home/attune/tmp/".<br>Making this unique for each job means we can run multiple snapshot jobs at the same time. |
-| oVirt: VM Search String | Text | `ovirtvmsearchstring` | Matches for the VM name.<br>Use * for the match any character any number of times wildcard.<br>Examples:<br>1. For an exact match use the exact name of the VM: "ko1vs3.ko1.synerty.com".<br>2. To match all VM names starting with "ko1vs" use the search string with the wildcard "ko1vs*". |
+| oVirt: VM Search String | Text | `ovirtvmsearchstring` | Matches for the VM name.<br>Use * for the match any character any number of times wildcard.<br>Examples:<br>1. For an exact match use the exact name of the VM: "ko1vs3.ko1.synerty.com".<br>2. To match all VM names starting with "ko1vs" use the search string with the wildcard "ko1vs*".<br><br>This parameter supports a comma separated list of search strings |
 | Target Server | Basic Node | `targetserver` |  |
 | Target Server: Lin | Linux/Unix Node | `targetserverlin` | The target server is a generic placeholder, usually used for the server a script will run on.<br>For example, the server being built if the procedure is building a server. |
 | Target Server: Linux TimeZone | Text | `targetserverlinuxtimezone` |  |

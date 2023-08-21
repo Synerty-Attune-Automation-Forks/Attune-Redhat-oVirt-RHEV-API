@@ -1,8 +1,11 @@
 USER_AT_HOST="{ovirtHostSshUser.user}@{ovirtHostServer.ip}"
 
-FROM="${HOME}/tmp/{ovirtUniqueFileName}"
+FROM="{ovirtHostServer.hostname}_{ovirtVmSearchString}_vm_list.txt"
+FROM="$(echo "$FROM" | sed 's/[*]/X/g;s/,/_/g;s/ //g;')"
+
 ls -lh "${FROM}"
-TO="/tmp"
+TO="/tmp/{ovirtVmSearchString}_vm_list.txt"
+TO="$(echo "$TO" | sed 's/[*]/X/g;s/,/_/g;s/ //g;')"
 
 scp -p \
     -o StrictHostKeyChecking=no \

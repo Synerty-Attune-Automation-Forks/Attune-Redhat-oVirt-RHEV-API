@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": "stop", 
+    "enabled": true, 
+    "externalUuid4": "028e27e7-91c0-4736-834d-bf280cf1da79", 
+    "interpreter": 1, 
+    "key": "eovtorotatebackupsonlocalmount", 
+    "name": "EOVTO Rotate Backups on Local Mount", 
+    "osCredKey": "ovirthostsshuser", 
+    "serverKey": "ovirthostserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

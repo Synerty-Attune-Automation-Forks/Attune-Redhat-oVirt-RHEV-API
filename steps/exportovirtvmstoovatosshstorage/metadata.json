@@ -1,0 +1,36 @@
+{
+    "actionOnStepFail": null, 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "053e2d93-c066-45eb-99ec-982d1dfd6250", 
+    "isBlueprint": true, 
+    "key": "exportovirtvmstoovatosshstorage", 
+    "links": [
+        {
+            "order": 50, 
+            "stepKey": "eovtosearchandwritevmstofile"
+        }, 
+        {
+            "order": 100, 
+            "stepKey": "eovtocopyvmlistsfiletosourceovirthost"
+        }, 
+        {
+            "order": 150, 
+            "stepKey": "eovtoremoveexistingexports"
+        }, 
+        {
+            "order": 200, 
+            "stepKey": "eovtoexportcompressandmovetossh"
+        }, 
+        {
+            "order": 500, 
+            "stepKey": "eovtoremovevmlistsfileonovirthost"
+        }, 
+        {
+            "order": 550, 
+            "stepKey": "eovtoremovevmlistsfileonattune"
+        }
+    ], 
+    "name": "Export oVirt VMs to OVA to SSH Storage", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

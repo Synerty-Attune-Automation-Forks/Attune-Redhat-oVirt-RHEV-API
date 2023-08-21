@@ -1,0 +1,118 @@
+BACKUP_DIR="{ovaBackupPath}"
+# set -x
+cd "${BACKUP_DIR}"
+
+FILE="/tmp/{ovirtVmSearchString}_vm_list.txt"
+FILE="$(echo "$FILE" | sed 's/[*]/X/g;s/,/_/g;s/ //g;')"
+
+echo "Checking VM Name List file"
+ls -l ${FILE} > /dev/null
+
+while IFS= read -r vmName
+do
+    if [ -z ""$vmName ]
+    then
+        continue
+    fi
+    
+    pushd "$vmName"
+        echo "Starting with..."
+        ls -ltr $(find . -type f)
+        
+        if [ -d rotate_keep ]
+        then
+            echo "Rotate keep directory already exists, undoing partial rotate"
+            mv -v rotate_keep/* . || true
+            rmdir rotate_keep
+        fi
+        
+        if [ -d rotate_discard ]
+        then
+            echo "Rotate discard directory already exists, undoing partial rotate"
+            mv -v rotate_discard/* . || true
+            rmdir rotate_discard
+        fi
+        
+        mkdir rotate_keep
+        mkdir rotate_discard
+        
+        # ==== Keep the newst file for today
+        
+        echo "Keeping newest file from today days(s) ago."
+        # Take the newest for that day
+        dayAgoFiles="$(find . -type f -daystart -maxdepth 1  -mtime -1)"
+        if [ -z "${dayAgoFiles}" ]
+        then
+            echo "There are no backups from today"
+        else
+            # Sort newest at the top for that day
+            keep="$(ls -1t ${dayAgoFiles} | head -1)"
+            if [ -n "${keep}" ]
+            then
+                echo "Keeping file: ${keep}"
+                mv "${keep}" rotate_keep
+            fi
+        fi
+        
+
+        echo "Discading other backups from today."
+        for discard in $(find . -type f -daystart -maxdepth 1 -mtime -1 )
+        do
+            echo "Discading file: ${discard}"
+            mv "${discard}" rotate_discard
+        done
+
+        # ==== Keep the oldest file before and the newest file after these dates
+        
+        for day in {backupRotateKeepDays.value}
+        do
+            # We need to keep the oldest file before date
+            dayAgoFiles="$(find . -type f -daystart -maxdepth 1  -mtime -$(($day+1)) )"
+            keep="$(ls -1tr ${dayAgoFiles} | head -1)"
+            
+            if [ -n "${dayAgoFiles}" -a -n "${keep}" ]
+            then
+                echo "Keeping oldest file from $day days(s) ago."
+                echo "Keeping file: ${keep}"
+                mv "${keep}" rotate_keep
+            else
+                echo "There is no oldest file from $day days(s) ago to keep."
+            fi
+            
+            # We need to keep the newest file after the date.
+            dayAgoFiles="$(find . -type f -daystart -maxdepth 1  -mtime +$(($day+1)) )"
+            keep="$(ls -1t ${dayAgoFiles} | head -1)"
+                
+            if [ -n "${dayAgoFiles}" -a -n "${keep}" ]
+            then
+                echo "Keeping newest file after $day day(s)."
+                echo "Keeping file: ${keep}"
+                mv "${keep}" rotate_keep
+            else
+                echo "There are no newer file after $day day(s), nothing to keep."
+            fi
+            
+            echo "Discading other files from $day day(s) ago or newer."
+            for discard in $(find . -type f -daystart -maxdepth 1 -mtime -$(($day+1)) )
+            do
+                echo "Discading file: ${discard}"
+                mv "${discard}" rotate_discard
+            done
+    
+        done
+        
+        echo "Finished sorting..."
+        ls -ltr $(find . -type f)
+        
+        mv rotate_keep/* . || true
+        rmdir rotate_keep
+
+        rm -fv rotate_discard/* || true
+        rmdir rotate_discard
+        
+        echo "Finished rotation"
+        ls -ltr
+        
+    popd
+
+done <<< $(cat ${FILE} | cut -d',' -f1)

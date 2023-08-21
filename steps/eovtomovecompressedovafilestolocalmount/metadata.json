@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": "stop", 
+    "enabled": true, 
+    "externalUuid4": "64dd21a5-c343-487f-bbe6-c52bdbd34e13", 
+    "interpreter": 1, 
+    "key": "eovtomovecompressedovafilestolocalmount", 
+    "name": "EOVTO Move Compressed OVA Files to Local Mount", 
+    "osCredKey": "ovirthostsshuser", 
+    "serverKey": "ovirthostserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

@@ -8,26 +8,12 @@ import sys
 
 import ovirtsdk4 as sdk
 import ovirtsdk4.types as types
-
-def waitForJobsToFinish(connection, logger):
-  jobs_service = connection.system_service().jobs_service()
-  jobs = jobs_service.list()
-
-  for job in jobs:
-    logger.info("%s, %s" % (job.id, job.description))
-    while job.status == types.JobStatus.STARTED:
-      time.sleep(10)
-      job = jobs_service.job_service(job.id).get()
-      logger.info('job-status: %s' % (job.status))
       
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logger = logging.getLogger("Attune")
 
-os.chdir("tmp")
-cwd = os.getcwd()
-
-vm_names_file_name = "{ovirtUniqueFileName}"
-logger.info("vm_names_file_name=[%s]" % vm_names_file_name)
+ovirtHostServer="{oVirtHostServer.fqn}"
+logger.info("ovirtHostServer=%s", ovirtHostServer)
 
 # Create the connection to the server:
 connection = sdk.Connection(
@@ -40,11 +26,43 @@ connection = sdk.Connection(
 )
 logger.info("Connection Successful")
 
+def waitForJobsToFinish(all=False):
+    jobs_service = connection.system_service().jobs_service()
+    jobs = jobs_service.list()
+    
+    while True :
+        jobs = jobs_service.list()
+        for job in list(jobs):
+            if ovirtHostServer.lower() not in job.description.lower():
+                jobs.remove(job)
+                continue
+                
+            jobStat = jobs_service.job_service(job.id).get()
+
+            if jobStat.status == types.JobStatus.FAILED:
+                jobs.remove(job)
+                continue
+
+            if jobStat.status == types.JobStatus.FINISHED:
+                jobs.remove(job)
+                continue
+                
+            logger.info("Waiting, %s - %s" % (jobStat.status, job.description))
+        
+        if all:
+            if not jobs:
+                break
+                
+        elif len(jobs) < {maxConcurrentOvaExports}:
+            logger.info("Waiting for %s Jobs to complete", len(jobs))
+            break
+            
+        time.sleep(10)
+        
+    logger.info("Waiting for Jobs to complete - finished")
+
 logger.info("Getting hosts_service")
 hosts_service = connection.system_service().hosts_service()
-
-ovirtHostServer="site1ovh1.site1.synerty.com"
-logger.info("ovirtHostServer=%s", ovirtHostServer)
 
 # Find the host:
 host = hosts_service.list(search='name=' + ovirtHostServer)[0]
@@ -60,7 +78,10 @@ system_service = connection.system_service()
 logger.info("Getting vms_service")
 vms_service = system_service.vms_service()
 
-vm_names_file_name = "{ovirtUniqueFileName}"
+
+vm_names_file_name = "{ovirtHostServer.hostname}_{ovirtVmSearchString}_vm_list.txt"
+vm_names_file_name = vm_names_file_name.replace('*', 'X').replace(',', '_').replace(' ', '')
+logger.info("vm_names_file_name=[%s]" % vm_names_file_name)
 vm_names_file = open(vm_names_file_name, "r")
 
 i = 0;    
@@ -79,7 +100,13 @@ for line in vm_names_file:
     vm_service = vms_service.vm_service(id)
     
     # Check that there are no running jobs.
-    waitForJobsToFinish(connection, logger)
+    waitForJobsToFinish()
+    
+    logger.info("Exporting %s to %s on host %s",
+        name,
+        '{ovaExportPath}',
+        '{ovirtHostServer.hostname}'
+    )
     
     vm_service.export_to_path_on_host(
         host=types.Host(id=host.id),
@@ -90,6 +117,8 @@ for line in vm_names_file:
     )
     
     # Wait for the export to finish.
-    waitForJobsToFinish(connection, logger)
-    
+    waitForJobsToFinish()
+
+waitForJobsToFinish(all=True)
+
 EOF

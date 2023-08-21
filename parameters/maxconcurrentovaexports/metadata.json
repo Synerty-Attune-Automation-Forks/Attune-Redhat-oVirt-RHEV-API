@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "6c514358-41a7-4f5d-9ac8-a8264d2a5f0d", 
+    "key": "maxconcurrentovaexports", 
+    "name": "Max Concurrent OVA Exports", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

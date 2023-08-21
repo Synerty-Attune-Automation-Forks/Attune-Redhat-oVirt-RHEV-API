@@ -1,40 +1,23 @@
-OVA_DIR="/vm_local/ova/"
+OVA_DIR="{ovaExportPath}"
 
 cd "${OVA_DIR}"
-echo "Original files in ${OVA_DIR}"
-ls -lh
 
 FILE="/tmp/{ovirtUniqueFileName}"
+ls -l ${FILE}
 
-i=1
-
-while IFS= read -r line
+while IFS= read -r vmName
 do
-    # A line can look like:
-    # ko1vs1.ko1.synerty.com,c6357921-8000-4867-8db4-53045ac44528
+    if [ -z ""$vmName ]
+    then
+        continue
+    fi
     
-    # To tokenizse the line set teh internal field separator to ,
-    IFS=','
-    WORD_NUMBER=0
+    # Buld up the 7zipped OVA file name
+    OVA_ZIPPED_FILE_NAME="${vmName}.ova.7z"
     
-    for word in $line; 
-    do 
+    echo "Original files in ${OVA_ZIPPED_FILE_NAME}"
+    ls -lh "${OVA_ZIPPED_FILE_NAME}"
     
-        if [ "${WORD_NUMBER}" -eq 0 ]
-        then
-            # The 0th token is the VM Name
-            
-            # Buld up the 7zipped OVA file name
-            OVA_ZIPPED_FILE_NAME="${word}.ova.7z"
-            
-            rm -vf "${OVA_ZIPPED_FILE_NAME}"
-        fi
+    rm -vf "${OVA_ZIPPED_FILE_NAME}"
     
-        let "WORD_NUMBER=WORD_NUMBER+1"
-    done
-    
-  let "i++"
-done < "${FILE}"
-
-echo "Current files in ${OVA_DIR}"
-ls -lh
+done <<< $(cat ${FILE} | cut -d',' -f1)

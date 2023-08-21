@@ -1,0 +1,1454 @@
+
+<!doctype html>
+<html lang="en">
+
+
+
+
+<head>
+    <title>How to Export oVirt VMs to OVA to SSH Storage - Attune Automation</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title"
+          content="How to Export oVirt VMs to OVA to SSH Storage - Attune Automation">
+    <meta name="description"
+          content="">
+    <meta name="robots"
+          content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large">
+
+    <meta property="og:locale" content="en_AU" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title"
+          content="HowTo Export oVirt VMs to OVA to SSH Storage - Attune Automation" />
+    <meta property="og:description" content="" />
+    <meta property="og:site_name" content="Attune Automation" />
+    <meta property="article:section" content="IT Instruction" />
+
+    <meta name="twitter:title"
+          content="How to Export oVirt VMs to OVA to SSH Storage - Attune Automation" />
+    <meta name="twitter:description" content="" />
+
+    <link rel="icon" href="https://www.servertribe.com/wp-content/uploads/2020/10/cropped-server_tribe_favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="https://www.servertribe.com/wp-content/uploads/2020/10/cropped-server_tribe_favicon-192x192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="https://www.servertribe.com/wp-content/uploads/2020/10/cropped-server_tribe_favicon-180x180.png">
+    <meta name="msapplication-TileImage" content="https://www.servertribe.com/wp-content/uploads/2020/10/cropped-server_tribe_favicon-270x270.png">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=G-5TZQZNDJCD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-5TZQZNDJCD');
+    </script>
+</head>
+
+
+<body>
+
+<!-- Project NavBar -->
+
+<div class="bg-white border-bottom box-shadow sticky-top mb-3">
+<div class="container px-0">
+    <div class="row px-0">
+        <div class="col d-flex flex-column flex-lg-row align-items-center px-0
+            py-3">
+            <a class="navbar-brand my-0 mr-lg-auto"
+                  href="https://www.servertribe.com/"
+                  target="_blank">
+                    <img
+                        src="https://www.servertribe.com/wp-content/uploads/2022/06/AttuneLogoV2_powered_by.png"
+                        alt="Attune - Powered by ServerTribe"
+                        class="img-fluid navbar-img">
+            </a>
+            <nav class="my-2 my-lg-0 mr-lg-3">
+                <a class="p-2 text-dark" href="http://doc.servertribe.com/"
+                   target="_blank">
+                    Documentation
+                </a>
+                <a class="p-2 text-dark"
+                   href="https://discord.com/invite/3YpJsagqUn"
+                   target="_blank">
+                    Discord
+                </a>
+                <a class="p-2 text-dark" href="https://github.com/Attune-Automation"
+                   target="_blank">
+                    GitHub
+                </a>
+                <a class="p-2 text-dark" href="https://www.servertribe.com/learn/"
+                   target="_blank">
+                    Learn
+                </a>
+            </nav>
+            <a class="btn btn-outline-primary"
+               href="https://www.servertribe.com/download-attune-registration/"
+               target="_blank">
+                Download NOW!
+            </a>
+        </div>
+    </div>
+</div></div>
+
+<!-- Project breadcrumbs -->
+
+<!-- Project breadcrumbs -->
+<div class="container px-0">
+    <div class="row">
+        <nav class="col px-0" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">
+                    Redhat oVirt/RHEV API
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <strong>Export oVirt VMs to OVA to SSH Storage</strong>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<!-- Blueprint Header -->
+
+<div class="container px-0">
+    <!-- Blueprint name and description -->
+    <div class="row">
+        <div class="col px-0">
+            <h1 class="text-left">
+                How to Export oVirt VMs to OVA to SSH Storage
+            </h1>
+        </div>
+    </div>
+
+<!-- Blueprint Description -->
+    <div class="row pt-4">
+        <div class="col-6 px-0">
+            <h6 class="text-left">
+                This documentation is generated by
+                <a href="https://www.servertribe.com/"
+                    class="badge badge-primary"
+                    target="_blank">
+                    Attune
+                </a>
+            </h6>
+        </div>
+        <div class="col-6 align-self-end text-right px-0">
+            <h6 class="text-right">
+                <a href="https://www.youtube.com/@servertribe"
+                    class="badge badge-secondary"
+                    target="_blank">
+                    YouTube
+                </a>
+                <a href="https://github.com/Attune-Automation"
+                    class="badge badge-secondary"
+                    target="_blank">
+                    GitHub
+                </a>
+                <a href="https://discord.com/invite/3YpJsagqUn"
+                    class="badge badge-secondary"
+                    target="_blank">
+                    Discord
+                </a>
+                <a href="https://www.linkedin.com/company/servertribe/"
+                    class="badge badge-secondary"
+                    target="_blank">
+                    LinkedIn
+                </a>
+                <a href="http://doc.servertribe.com/"
+                    class="badge badge-secondary"
+                    target="_blank">
+                    Documentation
+                </a>
+            </h6>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="documentation">
+    <div class="container px-0">
+        <div class="row">
+
+<!-- Blueprint ToC -->
+
+
+            <div class="toc col-lg-2 px-0 pr-5">
+                <div class="container px-0 pt-3">
+                    <p class="pb-2">
+                        <strong>Contents</strong>
+                    </p>
+                    <p class="text-muted">
+                        <a href="#top">
+                            <strong>Export oVirt VMs to OVA to SSH Storage</strong>
+                        </a>
+                    </p>
+
+
+    
+        
+
+                    <p class="text-muted pt-2">
+                        <a href="#eovtosearchandwritevmstofile">
+                            <strong>Step 1 -</strong> EOVTO Search and Write VMs to File
+                        </a>
+                    </p>
+
+        
+
+                    <p class="text-muted pt-2">
+                        <a href="#eovtocopyvmlistsfiletosourceovirthost">
+                            <strong>Step 2 -</strong> EOVTO Copy VM Lists File to Source oVirt Host
+                        </a>
+                    </p>
+
+        
+
+                    <p class="text-muted pt-2">
+                        <a href="#eovtoremoveexistingexports">
+                            <strong>Step 3 -</strong> EOVTO Remove existing exports
+                        </a>
+                    </p>
+
+        
+
+                    <p class="text-muted pt-2">
+                        <a href="#eovtoexportcompressandmovetossh">
+                            <strong>Step 4 -</strong> EOVTO Export, Compress and Move to SSH
+                        </a>
+                    </p>
+    
+        
+
+                    <p class="text-muted pt-2">
+                        <a href="#eovtoexportvmstoovausingexporttopathonhost">
+                            <strong>Step 4.1 -</strong> EOVTO Export VMs to OVA - using export_to_path_on_host
+                        </a>
+                    </p>
+
+        
+
+                    <p class="text-muted pt-2">
+                        <a href="#eovtocompressovafiles">
+                            <strong>Step 4.2 -</strong> EOVTO Compress OVA Files
+                        </a>
+                    </p>
+
+        
+
+                    <p class="text-muted pt-2">
+                        <a href="#eovtorsynccompressedovafilestosshstorage">
+                            <strong>Step 4.3 -</strong> EOVTO Rsync Compressed OVA Files to SSH Storage
+                        </a>
+                    </p>
+
+
+        
+
+                    <p class="text-muted pt-2">
+                        <a href="#eovtoremovevmlistsfileonovirthost">
+                            <strong>Step 5 -</strong> EOVTO Remove VM Lists File on oVirt Host
+                        </a>
+                    </p>
+
+        
+
+                    <p class="text-muted pt-2">
+                        <a href="#eovtoremovevmlistsfileonattune">
+                            <strong>Step 6 -</strong> EOVTO Remove VM Lists File on Attune
+                        </a>
+                    </p>
+
+
+                </div>
+            </div>
+
+<!-- Blueprint Contents -->
+            <div class="col-lg-8 pt-3">
+                <div class="container">
+
+
+        <div class="jumbotron">
+            <p class="display-3 text-center">
+                <strong>Automate This</strong>
+            </p>
+            <p class="lead text-center">
+                Use the <strong>Attune GUI</strong> for your Scripts
+            </p>
+            <p class="lead">
+                <ol>
+                    <a href="https://www.servertribe.com/download-attune-registration/"
+                        target="_blank">
+                        <span class="badge badge-primary">1</span>
+                        Download Attune
+                        <i class="fa-solid fa-download fa-beat-fade" style="color: #0197ff;"></i>
+                    </a>
+                </ol>
+                <ol>
+                    <a href="https://github.com/attune-Automation/"
+                        target="_blank">
+                        <span class="badge badge-primary">2</span>
+                         Copy the Attune Project URL
+                         <i class="fa-brands fa-github fa-fade"></i>
+                    </a>
+                </ol>
+                <ol>
+                    <a href="https://servertribe-attune.readthedocs.io/en/latest/howto/design_workspace/clone_project.html"
+                        target="_blank">
+                        <span class="badge badge-primary">3</span>
+                        Clone the Project in Attune
+                         <i class="fa-solid fa-book fa-fade" style="color: #0197ff;"></i>
+                    </a>
+                </ol>
+                <ol>
+                    <a href="https://www.youtube.com/watch?v=GCWDI29rDV0"
+                        target="_blank">
+                        <span class="badge badge-primary">4</span>
+                        Plan your Job(s)
+                        <i class="fa-brands fa-youtube fa-fade" style="color: #0197ff;"></i>
+                    </a>
+                </ol>
+                <ol>
+                    <a href="https://www.youtube.com/watch?v=b7DhFcURkZg"
+                        target="_blank">
+                        <span class="badge badge-primary">5</span>
+                        Run your Job(s)
+                        <i class="fa-brands fa-youtube fa-fade" style="color: #0197ff;"></i>
+                    </a>
+                </ol>
+            </p>
+            <p class="lead text-center">
+                You've automated: <strong>Export oVirt VMs to OVA to SSH Storage</strong>
+            </p>
+            <hr class="my-4 text-center">
+            <div class="col px-0">
+                <p class="text-center">
+                    Get the most out of automation with our get started
+                    videos, product demonstrations, and more.
+                </p>
+                <p class="lead text-center">
+                    <a class="btn btn-primary btn-lg"
+                       href="https://www.servertribe.com/learn/"
+                       target="_blank"
+                       role="button">
+                        Learn Attune Automation
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <p>The following steps will guide you through the manual process.</p>
+        </div>
+
+<!-- Blueprint Steps -->
+
+
+        
+
+
+
+                    <div class="row pt-5">
+                        <h3 id="eovtosearchandwritevmstofile">
+                            <a href="#eovtosearchandwritevmstofile">
+                                <strong>Step 1 -</strong> EOVTO Search and Write VMs to File
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                <p>The format of a line in the Comma Separted Values file is:</p>
+<p>name_of_virtual_machine,id_of_virtual_machine</p>
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {linuxattuneuser}@{attuneosbuildserver}
+                            </code>
+                        </div>
+
+
+
+    
+
+
+
+    <div class="row">
+        <p>
+            Execute the following script:
+        </p>
+    </div>
+    <div class="row">
+        <div class="col px-0">
+            <pre>
+                <code class="language-sql py-0">
+export PATH=~/ks_ovirt_py_venv/bin:$PATH
+
+python3 &lt;&lt;&quot;EOF&quot;
+import logging
+import os
+import time
+import sys
+
+import ovirtsdk4 as sdk
+import ovirtsdk4.types as types
+
+
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger(&quot;Attune&quot;)
+
+# This example will connect to the server, search for a VM by a name pettern and
+# write the list to file.
+
+# Create the connection to the server:
+connection = sdk.Connection(
+    url=&#x27;https://{ovirtEngineServer.fqn}/ovirt-engine/api&#x27;,
+    username=&#x27;{ovirtEngineApiUser.user}&#x27;,
+    password=&#x27;{ovirtEngineApiUser.password}&#x27;,
+    insecure=True,
+    debug=True,
+    log=logger,
+)
+logger.info(&quot;Connection Successful&quot;)
+
+# Find the service that manages VMs:
+logger.info(&quot;Getting system_service&quot;)
+system_service = connection.system_service()
+
+logger.info(&quot;Getting vms_service&quot;)
+vms_service = system_service.vms_service()
+
+# Find the VM:
+logger.info(&quot;Searching for VM &#x27;name={ovirtVmSearchString} and cluster={ovirtClusterName}&#x27;&quot;)
+
+vm_names_file_name = &quot;{ovirtHostServer.hostname}_{ovirtVmSearchString}_vm_list.txt&quot;
+vm_names_file_name = vm_names_file_name.replace(&#x27;*&#x27;, &#x27;X&#x27;).replace(&#x27;,&#x27;, &#x27;_&#x27;).replace(&#x27; &#x27;, &#x27;&#x27;)
+vm_names_file = open(vm_names_file_name, &quot;w&quot;)
+
+try:
+    for searchString in &quot;{ovirtVmSearchString}&quot;.split(&#x27;,&#x27;):
+        searchString = searchString.strip()
+        if not searchString:
+            continue
+            
+        logger.info(&quot;Searching for %s&quot;, searchString)
+            
+        # Find the VMs:
+        vm_list = vms_service.list(
+            search=&#x27;name=%s and cluster={ovirtClusterName}&#x27;
+                % searchString,
+            case_sensitive=False
+        )
+        
+        number_vms = len(vm_list)
+        logger.info(&quot;number_vms = &quot; + str(number_vms))
+        
+        for vm in vm_list:
+            name = vm.name
+            
+            print(&quot;%s, id=%s&quot; % (name, vm.id))
+            vm_names_file.write(&quot;%s,%s\n&quot; % (name, vm.id))
+
+    logger.info(&quot;Written to %s&quot;, vm_names_file_name)
+        
+    vm_names_file.close()
+
+except IndexError:
+    logger.info(&quot;No VMs found&quot;)
+    exit(1)
+
+# Close the connection to the server:
+connection.close()
+
+EOF
+
+
+FILE=&quot;{ovirtHostServer.hostname}_{ovirtVmSearchString}_vm_list.txt&quot;
+FILE=&quot;$(echo &quot;$FILE&quot; | sed &#x27;s/[*]/X/g;s/,/_/g;s/ //g;&#x27;)&quot;
+
+echo &quot;Found $(wc -l &lt; ${FILE}) VMs&quot;
+
+echo &quot;We&#x27;ve found the fillowing VMs:&quot;
+cat ${FILE}
+                </code>
+            </pre>
+        </div>
+    </div>
+
+
+
+
+
+        
+
+
+
+                    <div class="row pt-5">
+                        <h3 id="eovtocopyvmlistsfiletosourceovirthost">
+                            <a href="#eovtocopyvmlistsfiletosourceovirthost">
+                                <strong>Step 2 -</strong> EOVTO Copy VM Lists File to Source oVirt Host
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+
+
+
+    <div class="row">
+        <p>
+            Execute the following script:
+        </p>
+    </div>
+    <div class="row">
+        <div class="col px-0">
+            <pre>
+                <code class="language-sql py-0">
+USER_AT_HOST=&quot;{ovirtHostSshUser.user}@{ovirtHostServer.ip}&quot;
+
+FROM=&quot;{ovirtHostServer.hostname}_{ovirtVmSearchString}_vm_list.txt&quot;
+FROM=&quot;$(echo &quot;$FROM&quot; | sed &#x27;s/[*]/X/g;s/,/_/g;s/ //g;&#x27;)&quot;
+
+ls -lh &quot;${FROM}&quot;
+TO=&quot;/tmp/{ovirtVmSearchString}_vm_list.txt&quot;
+TO=&quot;$(echo &quot;$TO&quot; | sed &#x27;s/[*]/X/g;s/,/_/g;s/ //g;&#x27;)&quot;
+
+scp -p \
+    -o StrictHostKeyChecking=no \
+    -o UserKnownHostsFile=/dev/null \
+    -o  PreferredAuthentications=password \
+    &quot;${FROM}&quot; \
+    ${USER_AT_HOST}:${TO}
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <p>
+            This script may require you to answer the following prompts:
+        </p>
+    </div>
+    <div class="row">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Prompt
+                    </th>
+                    <th class="prompts">
+                        Answer
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        password:
+                    </td>
+                    <td class="prompts">
+                        <code class="language-sql">
+{ovirtHostSshUser.password}
+                        </code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Are you sure you want to continue connecting (yes/no)?
+                    </td>
+                    <td class="prompts">
+                        <code class="language-sql">
+yes
+                        </code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Are you sure you want to continue connecting (yes/no/[fingerprint])?
+                    </td>
+                    <td class="prompts">
+                        <code class="language-sql">
+yes
+                        </code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+        
+
+
+
+                    <div class="row pt-5">
+                        <h3 id="eovtoremoveexistingexports">
+                            <a href="#eovtoremoveexistingexports">
+                                <strong>Step 3 -</strong> EOVTO Remove existing exports
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {ovirthostsshuser}@{ovirthostserver}
+                            </code>
+                        </div>
+
+
+
+    
+
+
+
+    <div class="row">
+        <p>
+            Execute the following script:
+        </p>
+    </div>
+    <div class="row">
+        <div class="col px-0">
+            <pre>
+                <code class="language-sql py-0">
+OVA_DIR=&quot;{ovaExportPath}&quot;
+
+cd &quot;${OVA_DIR}&quot;
+
+FILE=&quot;/tmp/{ovirtVmSearchString}_vm_list.txt&quot;
+FILE=&quot;$(echo &quot;$FILE&quot; | sed &#x27;s/[*]/X/g;s/,/_/g;s/ //g;&#x27;)&quot;
+
+echo &quot;Checking VM Name List file&quot;
+ls -l ${FILE} &gt; /dev/null
+
+while IFS= read -r vmName
+do
+    if [ -z &quot;&quot;$vmName ]
+    then
+        continue
+    fi
+    
+    OVA_NAME=&quot;${vmName}.ova&quot;
+    
+    ls -l ${OVA_NAME}* 2&gt; /dev/null | true
+    
+    for fileToRm in ${OVA_NAME}*
+    do
+        if [ &quot;${fileToRm}&quot; = &quot;${OVA_NAME}*&quot; ]
+        then
+            echo &quot;GOOD - No files for ${vmName} to cleanup&quot;
+            continue
+        fi
+        
+        echo &quot;Removing ${fileToRm}&quot;
+        rm -vf &quot;${fileToRm}&quot;
+    done
+
+done &lt;&lt;&lt; $(cat ${FILE} | cut -d&#x27;,&#x27; -f1)
+                </code>
+            </pre>
+        </div>
+    </div>
+
+
+
+
+
+        
+
+
+
+                    <div class="row pt-5">
+                        <h3 id="eovtoexportcompressandmovetossh">
+                            <a href="#eovtoexportcompressandmovetossh">
+                                <strong>Step 4 -</strong> EOVTO Export, Compress and Move to SSH
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+                    <div class="row pt-5">
+                        <h4 id="eovtoexportvmstoovausingexporttopathonhost">
+                            <a href="#eovtoexportvmstoovausingexporttopathonhost">
+                                <strong>Step 4.1 -</strong> EOVTO Export VMs to OVA - using export_to_path_on_host
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                <p>https://www.mail-archive.com/users@ovirt.org/msg59302.html</p>
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {linuxattuneuser}@{attuneosbuildserver}
+                            </code>
+                        </div>
+
+
+
+    
+
+
+
+    <div class="row">
+        <p>
+            Execute the following script:
+        </p>
+    </div>
+    <div class="row">
+        <div class="col px-0">
+            <pre>
+                <code class="language-sql py-0">
+export PATH=~/ks_ovirt_py_venv/bin:$PATH
+
+python3 &lt;&lt;&quot;EOF&quot;
+import logging
+import os
+import time
+import sys
+
+import ovirtsdk4 as sdk
+import ovirtsdk4.types as types
+      
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger(&quot;Attune&quot;)
+
+ovirtHostServer=&quot;{oVirtHostServer.fqn}&quot;
+logger.info(&quot;ovirtHostServer=%s&quot;, ovirtHostServer)
+
+# Create the connection to the server:
+connection = sdk.Connection(
+    url=&#x27;https://{ovirtEngineServer.fqn}/ovirt-engine/api&#x27;,
+    username=&#x27;{ovirtEngineApiUser.user}&#x27;,
+    password=&#x27;{ovirtEngineApiUser.password}&#x27;,
+    insecure=True,
+    debug=True,
+    log=logger,
+)
+logger.info(&quot;Connection Successful&quot;)
+
+def waitForJobsToFinish(all=False):
+    jobs_service = connection.system_service().jobs_service()
+    jobs = jobs_service.list()
+    
+    while True :
+        jobs = jobs_service.list()
+        for job in list(jobs):
+            if ovirtHostServer.lower() not in job.description.lower():
+                jobs.remove(job)
+                continue
+                
+            jobStat = jobs_service.job_service(job.id).get()
+
+            if jobStat.status == types.JobStatus.FAILED:
+                jobs.remove(job)
+                continue
+
+            if jobStat.status == types.JobStatus.FINISHED:
+                jobs.remove(job)
+                continue
+                
+            logger.info(&quot;Waiting, %s - %s&quot; % (jobStat.status, job.description))
+        
+        if all:
+            if not jobs:
+                break
+                
+        elif len(jobs) &lt; {maxConcurrentOvaExports}:
+            logger.info(&quot;Waiting for %s Jobs to complete&quot;, len(jobs))
+            break
+            
+        time.sleep(10)
+        
+    logger.info(&quot;Waiting for Jobs to complete - finished&quot;)
+
+logger.info(&quot;Getting hosts_service&quot;)
+hosts_service = connection.system_service().hosts_service()
+
+# Find the host:
+host = hosts_service.list(search=&#x27;name=&#x27; + ovirtHostServer)[0]
+logger.info(&quot;host = %s, %s&quot; % (host.id, host.name))
+
+# Find the service that manages the host:
+host_service = hosts_service.host_service(host.id)
+
+# Find the service that manages VMs:
+logger.info(&quot;Getting system_service&quot;)
+system_service = connection.system_service()
+
+logger.info(&quot;Getting vms_service&quot;)
+vms_service = system_service.vms_service()
+
+
+vm_names_file_name = &quot;{ovirtHostServer.hostname}_{ovirtVmSearchString}_vm_list.txt&quot;
+vm_names_file_name = vm_names_file_name.replace(&#x27;*&#x27;, &#x27;X&#x27;).replace(&#x27;,&#x27;, &#x27;_&#x27;).replace(&#x27; &#x27;, &#x27;&#x27;)
+logger.info(&quot;vm_names_file_name=[%s]&quot; % vm_names_file_name)
+vm_names_file = open(vm_names_file_name, &quot;r&quot;)
+
+i = 0;    
+for line in vm_names_file:
+    logger.info(&quot;%s. %s&quot; %(i, line))
+    
+    tokens = line.split(&quot;,&quot;)
+    
+    # we need strip() to remove spaces and newlines around the tokens
+    name = tokens[0].strip()
+    id = tokens[1].strip()
+    
+    logger.info(&quot;name = [%s], id = [%s]&quot; % (name, id))
+
+    logger.info(&quot;Getting VM Service for VM ID=%s&quot; % id)
+    vm_service = vms_service.vm_service(id)
+    
+    # Check that there are no running jobs.
+    waitForJobsToFinish()
+    
+    logger.info(&quot;Exporting %s to %s on host %s&quot;,
+        name,
+        &#x27;{ovaExportPath}&#x27;,
+        &#x27;{ovirtHostServer.hostname}&#x27;
+    )
+    
+    vm_service.export_to_path_on_host(
+        host=types.Host(id=host.id),
+        directory=&#x27;{ovaExportPath}&#x27;,
+        exclusive=True,
+        filename=(&#x27;%s.ova&#x27; % (name)),
+        wait=True,
+    )
+    
+    # Wait for the export to finish.
+    waitForJobsToFinish()
+
+waitForJobsToFinish(all=True)
+
+EOF
+                </code>
+            </pre>
+        </div>
+    </div>
+
+
+
+
+
+    
+
+
+
+                    <div class="row pt-5">
+                        <h4 id="eovtocompressovafiles">
+                            <a href="#eovtocompressovafiles">
+                                <strong>Step 4.2 -</strong> EOVTO Compress OVA Files
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {ovirthostsshuser}@{ovirthostserver}
+                            </code>
+                        </div>
+
+
+
+    
+
+
+
+    <div class="row">
+        <p>
+            Execute the following script:
+        </p>
+    </div>
+    <div class="row">
+        <div class="col px-0">
+            <pre>
+                <code class="language-sql py-0">
+# EXT=&quot;7z&quot;
+# PROC_NAME=&quot;7z&quot;
+# compress() {
+#     OVA_NAME=&quot;$1&quot;
+#     time \
+#         7z a -mx1 -mmt8 &quot;${OVA_NAME}.${EXT}.tmp&quot; &quot;${OVA_NAME}&quot;
+# }
+
+# EXT=&quot;gz&quot;
+# PROC_NAME=&quot;gzip&quot;
+# compress() {
+#     OVA_NAME=&quot;$1&quot;
+#     time gzip --suffix &quot;.gz.tmp&quot; &quot;${OVA_NAME}&quot;
+# }
+
+EXT=&quot;gz&quot;
+PROC_NAME=&quot;pigz&quot;
+compress() {
+    OVA_NAME=&quot;$1&quot;
+    time pigz --suffix &quot;.gz.tmp&quot; &quot;${OVA_NAME}&quot;
+}
+
+
+OVA_DIR=&quot;{ovaExportPath}&quot;
+
+cd &quot;${OVA_DIR}&quot;
+
+FILE=&quot;/tmp/{ovirtVmSearchString}_vm_list.txt&quot;
+FILE=&quot;$(echo &quot;$FILE&quot; | sed &#x27;s/[*]/X/g;s/,/_/g;s/ //g;&#x27;)&quot;
+ls -l ${FILE}
+
+while IFS= read -r vmName
+do
+    if [ -z &quot;&quot;$vmName ]
+    then
+        continue
+    fi
+    OVA_NAME=&quot;${vmName}.ova&quot;
+    
+    while [ ! -f &quot;${OVA_NAME}&quot; ]
+    do
+        echo &quot;Waiting for ${OVA_NAME} to appear&quot;
+        sleep 30s
+    done
+    
+    while pgrep ${PROC_NAME} &gt; /dev/null
+    do
+        echo &quot;Waiting for other compress processes to complete&quot;
+        sleep 30s
+    done
+    
+    echo &quot;Compressing $(ls -lh ${OVA_NAME})&quot;
+    WAS=$(ls -lh &quot;${OVA_NAME}&quot;)
+    
+    # Compressing
+    compress &quot;${OVA_NAME}&quot;
+    
+    rm -vf &quot;${OVA_NAME}&quot;
+    
+    mv -v &quot;${OVA_NAME}.${EXT}.tmp&quot; &quot;${OVA_NAME}.${EXT}&quot;
+    
+    echo &quot;Reduced size from ${WAS} to $(ls -lh ${OVA_NAME}.${EXT})&quot;
+    
+done &lt;&lt;&lt; $(cat ${FILE} | cut -d&#x27;,&#x27; -f1)
+                </code>
+            </pre>
+        </div>
+    </div>
+
+
+
+
+
+    
+
+
+
+                    <div class="row pt-5">
+                        <h4 id="eovtorsynccompressedovafilestosshstorage">
+                            <a href="#eovtorsynccompressedovafilestosshstorage">
+                                <strong>Step 4.3 -</strong> EOVTO Rsync Compressed OVA Files to SSH Storage
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+
+
+
+    <div class="row">
+        <p>
+            Execute the following script:
+        </p>
+    </div>
+    <div class="row">
+        <div class="col px-0">
+            <pre>
+                <code class="language-sql py-0">
+EXT=&quot;gz&quot;
+OVA_DIR=&quot;{ovaExportPath}&quot;
+
+cd &quot;${OVA_DIR}&quot;
+
+FILE=&quot;/tmp/{ovirtVmSearchString}&quot;
+FILE=&quot;$(echo &quot;$FILE&quot; | sed &#x27;s/[*]/X/g;s/,/_/g;s/ //g;&#x27;)&quot;
+ls -l ${FILE}
+
+while IFS= read -r vmName
+do
+    if [ -z &quot;&quot;$vmName ]
+    then
+        continue
+    fi
+    
+    # Buld up the 7zipped OVA file name
+    OVA_COMPRESSED_FILE_NAME=&quot;${vmName}.ova.${EXT}&quot;
+    
+    while [ ! -f &quot;${OVA_COMPRESSED_FILE_NAME}&quot; ]
+    do
+        echo &quot;Waiting for ${OVA_COMPRESSED_FILE_NAME} to appear&quot;
+        sleep 30s
+    done
+    
+    echo &quot;Original files in ${OVA_COMPRESSED_FILE_NAME}&quot;
+    ls -lh &quot;${OVA_COMPRESSED_FILE_NAME}&quot;
+    
+    
+    NEW_NAME=&quot;$(date &#x27;+%y%m%d_%H%M&#x27;)_${OVA_COMPRESSED_FILE_NAME}&quot;
+    mkdir -p ${vmName}
+    mv -v ${OVA_COMPRESSED_FILE_NAME} ${vmName}/${NEW_NAME}
+
+    rsync \
+        --archive \
+        --verbose \
+        --progress \
+        --partial \
+        ${vmName} \
+        &quot;{ovirtHostSshUser.user}@{ovirtDestinationHost.ip}:{ovaBackupPath}&quot;
+    
+    rm -vf &quot;${vmName}&quot;
+    
+done &lt;&lt;&lt; $(cat ${FILE} | cut -d&#x27;,&#x27; -f1)
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <p>
+            This script may require you to answer the following prompts:
+        </p>
+    </div>
+    <div class="row">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Prompt
+                    </th>
+                    <th class="prompts">
+                        Answer
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {ovirtHostSshUser.user}@{ovirtDestinationHost.ip}'s password: 
+                    </td>
+                    <td class="prompts">
+                        <code class="language-sql">
+{ovirtHostSshUser.password}
+                        </code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+        
+
+
+
+                    <div class="row pt-5">
+                        <h3 id="eovtoremovevmlistsfileonovirthost">
+                            <a href="#eovtoremovevmlistsfileonovirthost">
+                                <strong>Step 5 -</strong> EOVTO Remove VM Lists File on oVirt Host
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+
+
+
+    <div class="row">
+        <p>
+            Execute the following script:
+        </p>
+    </div>
+    <div class="row">
+        <div class="col px-0">
+            <pre>
+                <code class="language-sql py-0">
+cd /tmp
+echo &quot;We are in `pwd`&quot;
+
+FILE=&quot;{ovirtVmSearchString}_vm_list.txt&quot;
+FILE=&quot;$(echo &quot;$FILE&quot; | sed &#x27;s/[*]/X/g;s/,/_/g;s/ //g;&#x27;)&quot;
+
+[[ -f ${FILE} ]] &amp;&amp; rm -fv ${FILE} || echo &quot;No file to remove.&quot;
+                </code>
+            </pre>
+        </div>
+    </div>
+
+
+
+
+
+        
+
+
+
+                    <div class="row pt-5">
+                        <h3 id="eovtoremovevmlistsfileonattune">
+                            <a href="#eovtoremovevmlistsfileonattune">
+                                <strong>Step 6 -</strong> EOVTO Remove VM Lists File on Attune
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {linuxattuneuser}@{attuneosbuildserver}
+                            </code>
+                        </div>
+
+
+
+    
+
+
+
+    <div class="row">
+        <p>
+            Execute the following script:
+        </p>
+    </div>
+    <div class="row">
+        <div class="col px-0">
+            <pre>
+                <code class="language-sql py-0">
+echo &quot;We are in `pwd`&quot;
+
+FILE=&quot;{ovirtHostServer.hostname}_{ovirtVmSearchString}_vm_list.txt&quot;
+FILE=&quot;$(echo &quot;$FILE&quot; | sed &#x27;s/[*]/X/g;s/,/_/g;s/ //g;&#x27;)&quot;
+[[ -f ${FILE} ]] &amp;&amp; rm -fv ${FILE} || echo &quot;No file to remove.&quot;
+                </code>
+            </pre>
+        </div>
+    </div>
+
+
+
+
+
+
+                    <div class="row pt-5">
+                        <div class="col">
+                            <h2>Completed</h2>
+                            <p>
+                                You have completed this instruction.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!-- Download Attune Ad -->
+
+            <div class="toc col-lg-2 px-0">
+                <div class="container px-0 pt-3 pl-5">
+                    <div class="card border-light mb-3" style="max-width: 18rem;">
+                        <div class="card-body attune-ad">
+                            <img
+                                src="https://www.servertribe.com/wp-content/uploads/2022/06/AttuneLogoV2_powered_by.png"
+                                alt="Attune - Powered by ServerTribe"
+                                class="img-fluid">
+                            <p class="card-title mt-3 text-center">
+                                <strong>Automate with Attune</strong>
+                            </p>
+                            <p class="card-text text-center">
+                                Download the Attune Community Edition.
+                            </p>
+                            <p class="text-center">
+                                <a href="https://www.servertribe.com/download-attune-registration/"
+                                   class="btn btn-primary mt-3">
+                                    DOWNLOAD!!!
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+<!-- Join Discord -->
+
+        <div class="row py-5">
+            <div class="jumbotron">
+              <h1 class="display-4 text-center">
+                  Discuss this Project in Discord
+              </h1>
+              <p class="lead">
+
+                  Join our Discord channel and connect with like-minded individuals who
+                  share your passion. Engage in lively discussions, gain valuable insights,
+                  and stay updated on the latest trends in our industry. Don't miss out on
+                  this opportunity to network, learn, and grow together.
+              </p>
+              <hr class="my-4 text-center">
+                <div class="col px-0">
+                  <p class="text-center">
+                      Click the link below and become a part of our vibrant community on
+                      Discord today!
+                  </p>
+                  <p class="lead text-center">
+                    <a class="btn btn-primary btn-lg"
+                       href="https://discord.com/invite/3YpJsagqUn"
+                       role="button">
+                        Join NOW!!!
+                    </a>
+                  </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Project Footer -->
+
+<footer class="footer fixed-bottom bg-white border-top box-shadow">
+      <div class="container px-0">
+          <div class="row">
+              <div class="col px-0">
+                  <a class="my-0 mr-lg-auto"
+                     href="https://www.servertribe.com/"
+                     target="_blank">
+                      <img
+                          src="https://www.servertribe.com/wp-content/uploads/2022/06/AttuneLogoV2_powered_by.png"
+                          alt="Attune - Powered by ServerTribe"
+                          class="img-fluid navbar-img">
+                  </a>
+              </div>
+          </div>
+      </div>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+</body>
+</html>

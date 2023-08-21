@@ -35,33 +35,37 @@ logger.info("Getting vms_service")
 vms_service = system_service.vms_service()
 
 # Find the VM:
-logger.info("Searching for VM 'name={ovirtVmSearchString}'")
+logger.info("Searching for VM 'name={ovirtVmSearchString} and cluster={ovirtClusterName}'")
 
-os.chdir("tmp")
-cwd = os.getcwd()
-print("cwd = %s" % cwd)
-
-vm_names_file_name = "{ovirtUniqueFileName}"
+vm_names_file_name = "{ovirtHostServer.hostname}_{ovirtVmSearchString}_vm_list.txt"
+vm_names_file_name = vm_names_file_name.replace('*', 'X').replace(',', '_').replace(' ', '')
 vm_names_file = open(vm_names_file_name, "w")
 
 try:
-    # Find the VMs:
-    vm_list = vms_service.list(search='name={ovirtVmSearchString}')
-    
-    number_vms = len(vm_list)
-    logger.info("number_vms = " + str(number_vms))
-    
-    i = 0
-    for vm in vm_list:
-        name = vm.name
-        
-
-        print("%s. %s, id=%s" % (i, name, vm.id))
-        vm_names_file.write("%s,%s\n" % (name, vm.id))
+    for searchString in "{ovirtVmSearchString}".split(','):
+        searchString = searchString.strip()
+        if not searchString:
+            continue
             
-        i += 1
+        logger.info("Searching for %s", searchString)
+            
+        # Find the VMs:
+        vm_list = vms_service.list(
+            search='name=%s and cluster={ovirtClusterName}'
+                % searchString,
+            case_sensitive=False
+        )
         
-    logger.info("Written to %s/%s." % (cwd, vm_names_file_name))
+        number_vms = len(vm_list)
+        logger.info("number_vms = " + str(number_vms))
+        
+        for vm in vm_list:
+            name = vm.name
+            
+            print("%s, id=%s" % (name, vm.id))
+            vm_names_file.write("%s,%s\n" % (name, vm.id))
+
+    logger.info("Written to %s", vm_names_file_name)
         
     vm_names_file.close()
 
@@ -73,3 +77,15 @@ except IndexError:
 connection.close()
 
 EOF
+
+
+FILE="{ovirtHostServer.hostname}_{ovirtVmSearchString}_vm_list.txt"
+FILE="$(echo "$FILE" | sed 's/[*]/X/g;s/,/_/g;s/ //g;')"
+
+echo "Found $(wc -l < ${FILE}) VMs"
+
+echo "We've found the fillowing VMs:"
+cat ${FILE}
+
+
+

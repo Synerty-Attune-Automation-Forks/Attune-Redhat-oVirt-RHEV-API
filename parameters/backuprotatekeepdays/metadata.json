@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "9c30b13b-3b1f-46d0-89ee-4b3fac3f783b", 
+    "key": "backuprotatekeepdays", 
+    "name": "Backup Rotate Keep Days", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

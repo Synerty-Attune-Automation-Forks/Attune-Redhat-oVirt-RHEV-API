@@ -1,0 +1,40 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "29a234cb-e219-4a3a-91b6-611d316ac25e", 
+    "isBlueprint": true, 
+    "key": "exportovirtvmstoovatolocalmount", 
+    "links": [
+        {
+            "order": 100, 
+            "stepKey": "eovtosearchandwritevmstofile"
+        }, 
+        {
+            "order": 150, 
+            "stepKey": "eovtocopyvmlistsfiletosourceovirthost"
+        }, 
+        {
+            "order": 200, 
+            "stepKey": "eovtoremoveexistingexports"
+        }, 
+        {
+            "order": 300, 
+            "stepKey": "eovtoexportcompressandmovelocal"
+        }, 
+        {
+            "order": 350, 
+            "stepKey": "eovtorotatebackupsonlocalmount"
+        }, 
+        {
+            "order": 400, 
+            "stepKey": "eovtoremovevmlistsfileonovirthost"
+        }, 
+        {
+            "order": 650, 
+            "stepKey": "eovtoremovevmlistsfileonattune"
+        }
+    ], 
+    "name": "Export oVirt VMs to OVA to Local Mount", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "3d4275a1-54d3-477c-88b4-2841f8b23814", 
+    "key": "ovabackuppath", 
+    "name": "OVA Backup Path", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

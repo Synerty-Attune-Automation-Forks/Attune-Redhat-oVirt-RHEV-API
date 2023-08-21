@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": "stop", 
+    "enabled": true, 
+    "externalUuid4": "2b717812-9bb2-41ae-8753-2e88582eef65", 
+    "interpreter": 1, 
+    "key": "eovtoremoveexistingexports", 
+    "name": "EOVTO Remove existing exports", 
+    "osCredKey": "ovirthostsshuser", 
+    "serverKey": "ovirthostserver", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

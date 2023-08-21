@@ -1,0 +1,64 @@
+# EXT="7z"
+# PROC_NAME="7z"
+# compress() {
+#     OVA_NAME="$1"
+#     time \
+#         7z a -mx1 -mmt8 "${OVA_NAME}.${EXT}.tmp" "${OVA_NAME}"
+# }
+
+# EXT="gz"
+# PROC_NAME="gzip"
+# compress() {
+#     OVA_NAME="$1"
+#     time gzip --suffix ".gz.tmp" "${OVA_NAME}"
+# }
+
+EXT="gz"
+PROC_NAME="pigz"
+compress() {
+    OVA_NAME="$1"
+    time pigz --suffix ".gz.tmp" "${OVA_NAME}"
+}
+
+
+OVA_DIR="{ovaExportPath}"
+
+cd "${OVA_DIR}"
+
+FILE="/tmp/{ovirtVmSearchString}_vm_list.txt"
+FILE="$(echo "$FILE" | sed 's/[*]/X/g;s/,/_/g;s/ //g;')"
+ls -l ${FILE}
+
+while IFS= read -r vmName
+do
+    if [ -z ""$vmName ]
+    then
+        continue
+    fi
+    OVA_NAME="${vmName}.ova"
+    
+    while [ ! -f "${OVA_NAME}" ]
+    do
+        echo "Waiting for ${OVA_NAME} to appear"
+        sleep 30s
+    done
+    
+    while pgrep ${PROC_NAME} > /dev/null
+    do
+        echo "Waiting for other compress processes to complete"
+        sleep 30s
+    done
+    
+    echo "Compressing $(ls -lh ${OVA_NAME})"
+    WAS=$(ls -lh "${OVA_NAME}")
+    
+    # Compressing
+    compress "${OVA_NAME}"
+    
+    rm -vf "${OVA_NAME}"
+    
+    mv -v "${OVA_NAME}.${EXT}.tmp" "${OVA_NAME}.${EXT}"
+    
+    echo "Reduced size from ${WAS} to $(ls -lh ${OVA_NAME}.${EXT})"
+    
+done <<< $(cat ${FILE} | cut -d',' -f1)
