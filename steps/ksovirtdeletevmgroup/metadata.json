@@ -1,0 +1,16 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "7df948c0-6d69-4b8b-88c2-30e2f0e594d4", 
+    "isBlueprint": true, 
+    "key": "ksovirtdeletevmgroup", 
+    "links": [
+        {
+            "order": 0, 
+            "stepKey": "ksovirtdeletevm"
+        }
+    ], 
+    "name": "KS oVirt Delete VM - Group", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

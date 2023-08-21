@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "4f3a7a52-7c23-471a-a005-859438b882cd", 
+    "key": "ovirtvmdescription", 
+    "name": "oVirt: VM Description", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

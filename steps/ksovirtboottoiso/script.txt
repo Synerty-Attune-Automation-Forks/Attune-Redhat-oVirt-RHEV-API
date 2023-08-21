@@ -31,8 +31,8 @@ system_service = connection.system_service()
 logger.info("Getting vms_service")
 vms_service = system_service.vms_service()
 
-logger.info("Searchig for VM 'name={targetServer.fqn}'")
-vm = vms_service.list(search='name={targetServer.fqn}')[0]
+logger.info("Searchig for VM 'name={kickstartedNode.fqn}'")
+vm = vms_service.list(search='name={kickstartedNode.fqn}')[0]
 
 logger.info("Getting VM Service for VM ID=%s" % vm.id)
 vm_service = vms_service.vm_service(vm.id)

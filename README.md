@@ -63,7 +63,10 @@ This Project contains the following Blueprints.
 ### Kickstart CentOS82+oVirt
 
 
-### KS oVirt Recreate Virtual Machine - Create
+### oVirt Recreate Virtual Machine
+
+
+### KS oVirt Delete VM - Group
 
 
 
@@ -103,6 +106,14 @@ This Project contains the following Blueprints.
 | Target Server: Lin | Linux/Unix Node | `targetserverlin` | The target server is a generic placeholder, usually used for the server a script will run on.<br>For example, the server being built if the procedure is building a server. |
 | Target Server: Linux TimeZone | Text | `targetserverlinuxtimezone` |  |
 | Target Subnet | Network IPv4 Subnet | `targetsubnet` |  |
+| KS: Attune Base Dir | Text | `ksattunebasedir` |  |
+| Kickstart Worker Linux Node | Linux/Unix Node | `kickstartworkerlinuxnode` | Linux refers to both Linux and MacOS |
+| oVirt: VM Description | Text | `ovirtvmdescription` | Input to the description text field in the vm struct https://ovirt.github.io/ovirt-engine-api-model/4.5/#types/vm. |
+| oVirt: Bios Type | Text | `ovirtbiostype` | Valid Values are (they must be in all capitals):<br>1. CLUSTER_DEFAULT - Use the cluster-wide default.<br>2. I440FX_SEA_BIOS - i440fx chipset with SeaBIOS.<br>3. Q35_OVMF - q35 chipset with OVMF (UEFI) BIOS.<br>4. Q35_SEA_BIOS - q35 chipset with SeaBIOS.<br>5. Q35_SECURE_BOOT- q35 chipset with OVMF (UEFI) BIOS with SecureBoot enabled.<br><br>https://ovirt.github.io/ovirt-engine-api-model/4.5/#types/bios_type |
+| oVirt: VM Comment | Text | `ovirtvmcomment` | Input to the comment text field in the vm struct https://ovirt.github.io/ovirt-engine-api-model/4.5/#types/vm. |
+| Kickstarted Node | Basic Node | `kickstartednode` |  |
+| oVirt: Datacenter Name | Text | `ovirtdatacentername` |  |
+| Kickstart Worker Build Linux User | Linux/Unix Credential | `kickstartworkerbuildlinuxuser` |  |
 
 
 
