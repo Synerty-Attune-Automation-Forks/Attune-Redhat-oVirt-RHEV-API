@@ -206,8 +206,8 @@
         
 
                     <p class="text-muted pt-2">
-                        <a href="#kscleanbuildfiles">
-                            <strong>Step 1 -</strong> KS Clean Build Files
+                        <a href="#lincleanbuildfiles">
+                            <strong>Step 1 -</strong> LIN Clean Build Files
                         </a>
                     </p>
 
@@ -376,8 +376,8 @@
         
 
                     <p class="text-muted pt-2">
-                        <a href="#kscleanbuildfiles">
-                            <strong>Step 11 -</strong> KS Clean Build Files
+                        <a href="#lincleanbuildfiles">
+                            <strong>Step 11 -</strong> LIN Clean Build Files
                         </a>
                     </p>
 
@@ -496,9 +496,9 @@
 
 
                     <div class="row pt-5">
-                        <h3 id="kscleanbuildfiles">
-                            <a href="#kscleanbuildfiles">
-                                <strong>Step 1 -</strong> KS Clean Build Files
+                        <h3 id="lincleanbuildfiles">
+                            <a href="#lincleanbuildfiles">
+                                <strong>Step 1 -</strong> LIN Clean Build Files
                             </a>
                         </h3>
                     </div>
@@ -527,7 +527,7 @@
                         </div>
                         <div class="row py-1">
                             <code class="language-sql">
-ssh {linuxattuneuser}@{attuneosbuildserver}
+ssh {kickstartworkerbuildlinuxuser}@{kickstartworkerlinuxnode}
                             </code>
                         </div>
 
@@ -546,11 +546,11 @@ ssh {linuxattuneuser}@{attuneosbuildserver}
         <div class="col px-0">
             <pre>
                 <code class="language-sql py-0">
-DIR=&quot;{ksVmwareAttuneBaseDir}/build-{targetServer.fqn}&quot;
+DIR=&quot;{ksAttuneBaseDir}/build-{kickstartedNode.fqn}&quot;
 [[ -d ${DIR} ]] &amp;&amp; rm -rf ${DIR} &amp;&amp; echo &quot;Removed ${DIR}&quot; || \
     echo &quot;No directory to remove.&quot;
 
-ISO=&quot;{ksVmwareAttuneBaseDir}/kickstart_{targetServer.fqn}.iso&quot;
+ISO=&quot;{ksAttuneBaseDir}/kickstart_{kickstartedNode.fqn}.iso&quot;
 [[ -f ${ISO} ]] &amp;&amp; rm -fv ${ISO} || echo &quot;No ISO to remove.&quot;
                 </code>
             </pre>
@@ -589,7 +589,18 @@ ISO=&quot;{ksVmwareAttuneBaseDir}/kickstart_{targetServer.fqn}.iso&quot;
 
 
 
-    
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {linuxattuneuser}@{attuneosbuildserver}
+                            </code>
+                        </div>
+
 
     
 
@@ -2432,9 +2443,9 @@ yum repolist -v enabled
 
 
                     <div class="row pt-5">
-                        <h3 id="kscleanbuildfiles">
-                            <a href="#kscleanbuildfiles">
-                                <strong>Step 11 -</strong> KS Clean Build Files
+                        <h3 id="lincleanbuildfiles">
+                            <a href="#lincleanbuildfiles">
+                                <strong>Step 11 -</strong> LIN Clean Build Files
                             </a>
                         </h3>
                     </div>
@@ -2463,7 +2474,7 @@ yum repolist -v enabled
                         </div>
                         <div class="row py-1">
                             <code class="language-sql">
-ssh {linuxattuneuser}@{attuneosbuildserver}
+ssh {kickstartworkerbuildlinuxuser}@{kickstartworkerlinuxnode}
                             </code>
                         </div>
 
@@ -2482,11 +2493,11 @@ ssh {linuxattuneuser}@{attuneosbuildserver}
         <div class="col px-0">
             <pre>
                 <code class="language-sql py-0">
-DIR=&quot;{ksVmwareAttuneBaseDir}/build-{targetServer.fqn}&quot;
+DIR=&quot;{ksAttuneBaseDir}/build-{kickstartedNode.fqn}&quot;
 [[ -d ${DIR} ]] &amp;&amp; rm -rf ${DIR} &amp;&amp; echo &quot;Removed ${DIR}&quot; || \
     echo &quot;No directory to remove.&quot;
 
-ISO=&quot;{ksVmwareAttuneBaseDir}/kickstart_{targetServer.fqn}.iso&quot;
+ISO=&quot;{ksAttuneBaseDir}/kickstart_{kickstartedNode.fqn}.iso&quot;
 [[ -f ${ISO} ]] &amp;&amp; rm -fv ${ISO} || echo &quot;No ISO to remove.&quot;
                 </code>
             </pre>
@@ -2554,7 +2565,18 @@ ISO=&quot;{ksVmwareAttuneBaseDir}/kickstart_{targetServer.fqn}.iso&quot;
 
 
 
-    
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {linuxattuneuser}@{attuneosbuildserver}
+                            </code>
+                        </div>
+
 
 
     

@@ -1,0 +1,11 @@
+{
+    "externalUuid4": "623fa9e6-8417-4bec-b49c-818de086630d", 
+    "fileName": "virtio-win-0.1.229-minimal.zip", 
+    "formatKey": "zip", 
+    "key": "ovirtdrivers09jan2023", 
+    "md5": "347f419edb0ec3d54f29213df5e05aef", 
+    "name": "oVirt Drivers 09-Jan-2023", 
+    "remoteUri": null, 
+    "size": 363335722, 
+    "type": "com.servertribe.attune.tuples.FileArchiveLargeTuple"
+}

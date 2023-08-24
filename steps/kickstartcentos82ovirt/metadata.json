@@ -8,7 +8,7 @@
     "links": [
         {
             "order": 0, 
-            "stepKey": "kscleanbuildfiles"
+            "stepKey": "lincleanbuildfiles"
         }, 
         {
             "order": 20, 
@@ -48,7 +48,7 @@
         }, 
         {
             "order": 400, 
-            "stepKey": "kscleanbuildfiles"
+            "stepKey": "lincleanbuildfiles"
         }, 
         {
             "order": 450, 

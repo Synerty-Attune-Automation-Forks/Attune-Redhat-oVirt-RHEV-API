@@ -1,0 +1,16 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "fe2da1c7-dd06-43a8-b295-f6f8dbdb6fd7", 
+    "isBlueprint": true, 
+    "key": "ksovirtdeployovirtdriversgroup", 
+    "links": [
+        {
+            "order": 0, 
+            "stepKey": "ksovirtdeployovirtdrivers"
+        }
+    ], 
+    "name": "KS oVirt Deploy oVirt Drivers - group", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}
