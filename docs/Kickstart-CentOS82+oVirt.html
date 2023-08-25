@@ -909,7 +909,18 @@ EOF
 
 
 
-    
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {kickstartworkerbuildlinuxuser}@{kickstartworkerlinuxnode}
+                            </code>
+                        </div>
+
 
 
     
@@ -966,18 +977,18 @@ vms_service = system_service.vms_service()
 logger.info(&quot;Getting the disks service for the new disk&quot;)
 disks_service = system_service.disks_service()
 
-logger.info(&quot;Searchig for VM &#x27;name={targetServer.fqn}&#x27;&quot;)
-vmSearch = vms_service.list(search=&#x27;name={targetServer.fqn}&#x27;)
+logger.info(&quot;Searchig for VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
+vmSearch = vms_service.list(search=&#x27;name={kickstartedNode.fqn}&#x27;)
 
 if not len(vmSearch):
-    logger.info(&quot;VM &#x27;name={targetServer.fqn}&#x27; doesn&#x27;t exist, exiting&quot;)
+    logger.info(&quot;VM &#x27;name={kickstartedNode.fqn}&#x27; doesn&#x27;t exist, exiting&quot;)
     exit(0)
 
-logger.info(&quot;Found VM &#x27;name={targetServer.fqn}&#x27;&quot;)
+logger.info(&quot;Found VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
 vm = vmSearch[0]
 
 
-diskName=&#x27;kickstart_{targetServer.fqn}.iso&#x27;
+diskName=&#x27;kickstart_{kickstartedNode.fqn}.iso&#x27;
 search_string=&quot;name=%s&quot; % diskName
 print(&quot;search_string=%s&quot; % search_string)
 
@@ -1062,18 +1073,7 @@ EOF
 
 
 
-
-                        <div class="row">
-                            <p>
-                                Connect via ssh:
-                            </p>
-                        </div>
-                        <div class="row py-1">
-                            <code class="language-sql">
-ssh {kickstartworkerbuildlinuxuser}@{kickstartworkerlinuxnode}
-                            </code>
-                        </div>
-
+    
 
 
     
@@ -1307,13 +1307,6 @@ EOF
                         </h4>
                     </div>
 
-                    <div class="row">
-                        <div class="description col px-0">
-                            <p>
-                                
-                            </p>
-                        </div>
-                    </div>
 
 
 
@@ -1422,7 +1415,7 @@ while True:
     logger.info(&quot;Waiting for disk to become online&quot;)
     time.sleep(5)
 
-logger.info(&quot;Wiating for attatchment status&quot;)
+logger.info(&quot;Waiting for attachment status&quot;)
 while True:
     logger.info(&quot;Getting disk attatchment for %s&quot;, diskName)
     disk = connection.follow_link(disk_attachment.disk)
@@ -2640,7 +2633,18 @@ EOF
 
 
 
-    
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {kickstartworkerbuildlinuxuser}@{kickstartworkerlinuxnode}
+                            </code>
+                        </div>
+
 
 
     
@@ -2697,18 +2701,18 @@ vms_service = system_service.vms_service()
 logger.info(&quot;Getting the disks service for the new disk&quot;)
 disks_service = system_service.disks_service()
 
-logger.info(&quot;Searchig for VM &#x27;name={targetServer.fqn}&#x27;&quot;)
-vmSearch = vms_service.list(search=&#x27;name={targetServer.fqn}&#x27;)
+logger.info(&quot;Searchig for VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
+vmSearch = vms_service.list(search=&#x27;name={kickstartedNode.fqn}&#x27;)
 
 if not len(vmSearch):
-    logger.info(&quot;VM &#x27;name={targetServer.fqn}&#x27; doesn&#x27;t exist, exiting&quot;)
+    logger.info(&quot;VM &#x27;name={kickstartedNode.fqn}&#x27; doesn&#x27;t exist, exiting&quot;)
     exit(0)
 
-logger.info(&quot;Found VM &#x27;name={targetServer.fqn}&#x27;&quot;)
+logger.info(&quot;Found VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
 vm = vmSearch[0]
 
 
-diskName=&#x27;kickstart_{targetServer.fqn}.iso&#x27;
+diskName=&#x27;kickstart_{kickstartedNode.fqn}.iso&#x27;
 search_string=&quot;name=%s&quot; % diskName
 print(&quot;search_string=%s&quot; % search_string)
 

@@ -1,0 +1,16 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "d5deac60-5c6f-4399-a048-7ff9f3ef1076", 
+    "isBlueprint": true, 
+    "key": "ksovirtdeletefloatingisodiskgroup", 
+    "links": [
+        {
+            "order": 0, 
+            "stepKey": "ksovirtdeletefloatingisodisk"
+        }
+    ], 
+    "name": "KS oVirt Delete Floating ISO Disk - Group", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

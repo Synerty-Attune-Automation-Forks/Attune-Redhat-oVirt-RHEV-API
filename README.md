@@ -66,6 +66,9 @@ This Project contains the following Blueprints.
 ### KS oVirt Delete VM - Group
 
 
+### KS oVirt Deploy Drivers 2 - group
+
+
 ### KS oVirt Deploy oVirt Drivers - group
 
 
@@ -75,7 +78,10 @@ This Project contains the following Blueprints.
 ### oVirt Recreate Virtual Machine
 
 
-### KS oVirt Deploy Drivers 2 - group
+### oVirt Set Disk Interface to VIRTIO_SCSI - Group
+
+
+### KS oVirt Delete Floating ISO Disk - Group
 
 
 

@@ -1,10 +1,10 @@
 {
     "actionOnStepFail": null, 
     "enabled": true, 
-    "externalUuid4": "fcd2dbc6-786e-4cd0-8ec1-b449755f784b", 
+    "externalUuid4": "da19acf1-6867-49f4-8659-78c0feb4618b", 
     "interpreter": 1, 
-    "key": "ksovirtdeletefloatingisodisk", 
-    "name": "KS oVirt Delete Floating ISO Disk", 
+    "key": "ovirtstopvm", 
+    "name": "oVirt Stop VM", 
     "osCredKey": "kickstartworkerbuildlinuxuser", 
     "serverKey": "kickstartworkerlinuxnode", 
     "successExitCode": 0, 

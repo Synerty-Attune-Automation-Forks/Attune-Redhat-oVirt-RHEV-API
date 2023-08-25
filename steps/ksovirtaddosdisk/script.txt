@@ -81,7 +81,7 @@ while True:
     logger.info("Waiting for disk to become online")
     time.sleep(5)
 
-logger.info("Wiating for attatchment status")
+logger.info("Waiting for attachment status")
 while True:
     logger.info("Getting disk attatchment for %s", diskName)
     disk = connection.follow_link(disk_attachment.disk)

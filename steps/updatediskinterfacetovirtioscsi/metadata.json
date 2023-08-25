@@ -1,10 +1,10 @@
 {
     "actionOnStepFail": null, 
     "enabled": true, 
-    "externalUuid4": "fcd2dbc6-786e-4cd0-8ec1-b449755f784b", 
+    "externalUuid4": "dcaf3c4e-a0d2-45d7-bb21-c0827e6dff85", 
     "interpreter": 1, 
-    "key": "ksovirtdeletefloatingisodisk", 
-    "name": "KS oVirt Delete Floating ISO Disk", 
+    "key": "updatediskinterfacetovirtioscsi", 
+    "name": "Update Disk Interface to VIRTIO_SCSI", 
     "osCredKey": "kickstartworkerbuildlinuxuser", 
     "serverKey": "kickstartworkerlinuxnode", 
     "successExitCode": 0, 
