@@ -1,0 +1,13 @@
+{
+    "actionOnStepFail": null, 
+    "archiveKey": "ovirtdrivers09jan2023virtiowin01229", 
+    "deployPath": "{ksAttuneBaseDir}/build-{kickstartedNode.fqn}", 
+    "enabled": true, 
+    "externalUuid4": "d8fb342f-c987-4143-b2f2-a20772f811fa", 
+    "key": "ksovirtdeploydrivers2", 
+    "name": "KS oVirt Deploy Drivers 2", 
+    "osCredKey": "kickstartworkerbuildlinuxuser", 
+    "serverKey": "kickstartworkerlinuxnode", 
+    "type": "com.servertribe.attune.tuples.StepPushDesignFileTuple", 
+    "unpack": true
+}

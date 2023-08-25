@@ -37,10 +37,6 @@
         {
             "order": 350, 
             "stepKey": "ksovirtboottoiso"
-        }, 
-        {
-            "order": 400, 
-            "stepKey": "kssshwait"
         }
     ], 
     "name": "oVirt Recreate Virtual Machine", 

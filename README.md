@@ -66,13 +66,16 @@ This Project contains the following Blueprints.
 ### KS oVirt Delete VM - Group
 
 
-### oVirt Recreate Virtual Machine
-
-
 ### KS oVirt Deploy oVirt Drivers - group
 
 
 ### LIN Clean Build Files - Group
+
+
+### oVirt Recreate Virtual Machine
+
+
+### KS oVirt Deploy Drivers 2 - group
 
 
 
@@ -131,6 +134,7 @@ This Project contains the following Blueprints.
 | CentOS8 Kickstart DVD Config | Version Controlled Files | https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/installation_guide/s1-kickstart2-options |
 | CentOS Minimal DVD v8.2 (2004) | Large Archives | https://synerty.atlassian.net/wiki/spaces/ATPONP/pages/edit-v2/360579105 |
 | oVirt Drivers 09-Jan-2023 | Large Archives |  |
+| oVirt Drivers 09-Jan-2023  virtio-win-0.1.229 | Large Archives | https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.229-1/virtio-win-0.1.229.iso<br><br>Full list is at https://github.com/virtio-win/virtio-win-pkg-scripts. |
 
 
 
