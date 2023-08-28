@@ -8,6 +8,10 @@
     "links": [
         {
             "order": 0, 
+            "stepKey": "unloadisofromvm"
+        }, 
+        {
+            "order": 50, 
             "stepKey": "ksovirtdeletefloatingisodisk"
         }
     ], 

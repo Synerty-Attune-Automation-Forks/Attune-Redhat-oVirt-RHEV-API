@@ -206,8 +206,16 @@
         
 
                     <p class="text-muted pt-2">
+                        <a href="#unloadisofromvm">
+                            <strong>Step 1 -</strong> Unload ISO from VM
+                        </a>
+                    </p>
+
+        
+
+                    <p class="text-muted pt-2">
                         <a href="#ksovirtdeletefloatingisodisk">
-                            <strong>Step 1 -</strong> KS oVirt Delete Floating ISO Disk
+                            <strong>Step 2 -</strong> KS oVirt Delete Floating ISO Disk
                         </a>
                     </p>
 
@@ -301,20 +309,13 @@
 
 
                     <div class="row pt-5">
-                        <h3 id="ksovirtdeletefloatingisodisk">
-                            <a href="#ksovirtdeletefloatingisodisk">
-                                <strong>Step 1 -</strong> KS oVirt Delete Floating ISO Disk
+                        <h3 id="unloadisofromvm">
+                            <a href="#unloadisofromvm">
+                                <strong>Step 1 -</strong> Unload ISO from VM
                             </a>
                         </h3>
                     </div>
 
-                    <div class="row">
-                        <div class="description col px-0">
-                            <p>
-                                
-                            </p>
-                        </div>
-                    </div>
 
 
 
@@ -336,6 +337,132 @@ ssh {kickstartworkerbuildlinuxuser}@{kickstartworkerlinuxnode}
                             </code>
                         </div>
 
+
+
+    
+
+
+
+    <div class="row">
+        <p>
+            Execute the following script:
+        </p>
+    </div>
+    <div class="row">
+        <div class="col px-0">
+            <pre>
+                <code class="language-sql py-0">
+export PATH=~/ks_ovirt_py_venv/bin:$PATH
+
+python3 &lt;&lt;&quot;EOF&quot;
+import logging
+import sys
+
+import ovirtsdk4 as sdk
+import ovirtsdk4.types as types
+
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger(&quot;Attune&quot;)
+
+# This example will connect to the server, search for a VM by name and
+# remove it:
+
+# Create the connection to the server:
+connection = sdk.Connection(
+    url=&#x27;https://{ovirtEngineServer.fqn}/ovirt-engine/api&#x27;,
+    username=&#x27;{ovirtEngineApiUser.user}&#x27;,
+    password=&#x27;{ovirtEngineApiUser.password}&#x27;,
+    insecure=True,
+    debug=True,
+    log=logger,
+)
+logger.info(&quot;Connection Successful&quot;)
+
+logger.info(&quot;Getting system_service&quot;)
+system_service = connection.system_service()
+
+logger.info(&quot;Getting vms_service&quot;)
+vms_service = system_service.vms_service()
+
+# Find the VM:
+logger.info(&quot;Searchig for VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
+vm = vms_service.list(search=&#x27;name={kickstartedNode.fqn}&#x27;)[0]
+
+logger.info(&quot;Getting storage_domains_services&quot;)
+sds_service = system_service.storage_domains_service()
+
+logger.info(&quot;Getting storage_domains for &#x27;name={ovirtDiskStorageName}&#x27;&quot;)
+storage_domain = sds_service.list(search=&#x27;name={ovirtDiskStorageName}&#x27;)[0]
+
+print(&quot;storage_domain = %s, id=%s&quot; % (storage_domain, storage_domain.id))
+
+logger.info(&quot;Getting storage_domains_service for &#x27;name={ovirtDiskStorageName}&#x27;&quot;)
+storage_domain_service = sds_service.storage_domain_service(storage_domain.id)
+
+logger.info(&quot;Getting VM Service for VM ID=%s&quot; % vm.id)
+vm_service = vms_service.vm_service(vm.id)
+
+logger.info(&quot;Get the CDROMS Service&quot;)
+cdroms_service = vm_service.cdroms_service()
+
+logger.info(&quot;Get the first CDROM&quot;)
+cdrom = cdroms_service.list()[0]
+
+logger.info(&quot;Get the CDROM service for the first drive&quot;)
+cdrom_service = cdroms_service.cdrom_service(cdrom.id)
+
+logger.info(&quot;Attach the CDROM&quot;)
+cdrom_service.update(
+    cdrom=types.Cdrom(
+        file=types.File(
+            id=&quot;&quot;
+        ),
+    ),
+    current=False,
+)
+
+logger.info(&quot;Close the connection to the server&quot;)
+connection.close()
+
+EOF
+                </code>
+            </pre>
+        </div>
+    </div>
+
+
+
+
+
+        
+
+
+
+                    <div class="row pt-5">
+                        <h3 id="ksovirtdeletefloatingisodisk">
+                            <a href="#ksovirtdeletefloatingisodisk">
+                                <strong>Step 2 -</strong> KS oVirt Delete Floating ISO Disk
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+    
 
 
     
