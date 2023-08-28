@@ -687,6 +687,33 @@ vm = vms_service.list(search=&#x27;name={kickstartedNode.fqn}&#x27;)[0]
 logger.info(&quot;Getting VM Service for VM ID=%s&quot; % vm.id)
 vm_service = vms_service.vm_service(vm.id)
 
+logger.info(&quot;Getting the disks service for the new disk&quot;)
+disks_service = system_service.disks_service()
+
+diskName=&#x27;{kickstartedNode.fqn}-disk0&#x27;
+search_string=&quot;name=%s&quot; % diskName
+
+logger.info(&quot;Getting the disk service for the new disk&quot;)
+disks_service = system_service.disks_service()
+disks_service_list = disks_service.list(search=search_string)
+
+if len(disks_service_list) == 0:
+    logger.info(&quot;No ISO disks found&quot;)
+    exit(1)
+else:
+    disk = disks_service_list[0]
+    logger.info(&quot;disk status = %s&quot; % disk.status)
+
+    logger.info(&quot;Starting to wait for disk to become online&quot;)
+    while True:
+        logger.info(&quot;Wait for disk to become online&quot;)
+        time.sleep(5)
+        
+        disk_service = disks_service.disk_service(disk.id)
+        disk = disk_service.get()
+        if disk.status == types.DiskStatus.OK:
+            break
+  
 logger.info(&quot;Booting VM to CDROM&quot;)
 vm_service.start()
 
