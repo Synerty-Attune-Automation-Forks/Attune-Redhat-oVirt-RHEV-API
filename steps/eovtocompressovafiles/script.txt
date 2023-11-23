@@ -17,7 +17,7 @@ EXT="gz"
 PROC_NAME="pigz"
 compress() {
     OVA_NAME="$1"
-    time pigz --suffix ".gz.tmp" "${OVA_NAME}"
+    time pigz --processes 4 --suffix ".gz.tmp" "${OVA_NAME}"
 }
 
 
