@@ -1,0 +1,16 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "258d5593-31ec-42cf-bf76-51a538588daf", 
+    "isBlueprint": true, 
+    "key": "lincleanbuildfilesgroup", 
+    "links": [
+        {
+            "order": 0, 
+            "stepKey": "lincleanbuildfiles"
+        }
+    ], 
+    "name": "LIN Clean Build Files - Group", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

@@ -1,0 +1,101 @@
+export PATH=~/ks_ovirt_py_venv/bin:$PATH
+
+python3 <<"EOF"
+import logging
+import time
+import sys
+
+from pprint import pprint
+
+import ovirtsdk4 as sdk
+import ovirtsdk4.types as types
+
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger("Attune")
+
+
+connection = sdk.Connection(
+    url='https://{ovirtEngineServer.fqn}/ovirt-engine/api',
+    username='{ovirtEngineApiUser.user}',
+    password='{ovirtEngineApiUser.password}',
+    insecure=True,
+    debug=True,
+    log=logger,
+)
+logger.info("Connection Successful")
+
+logger.info("Getting system_service")
+system_service = connection.system_service()
+
+logger.info("Getting vms_service")
+vms_service = system_service.vms_service()
+
+logger.info("Searchig for VM 'name={kickstartedNode.fqn}'")
+vm = vms_service.list(search='name={kickstartedNode.fqn}')[0]
+logger.info("Found VM 'name={kickstartedNode.fqn}'")
+
+logger.info("Getting the disks service for the new disk")
+disks_service = connection.system_service().disks_service()
+
+disk = disks_service.list(search="alias={kickstartedNode.fqn}-disk0")[0]
+
+logger.info("disk")
+#pprint(dir(disk))
+
+# logger.info("name=%s, alias = %s, id = %s, interface = %s, status=%s, actual_size=%s, description=%s" % (disk.name, disk.alias, disk.id, disk.interface, disk.status, disk.actual_size, disk.description))
+
+# disk_service = disks_service.disk_service(disk.id)
+
+# disk_service.update(
+#   disk=types.Disk(
+#     interface=types.DiskInterface.VIRTIO_SCSI,
+#     description="changed 10"
+#   )
+# )
+
+# disk = disks_service.list(search="alias={kickstartedNode.fqn}-disk0")[0]
+
+# logger.info("name=%s, alias = %s, id = %s, interface = %s, status=%s, actual_size=%s, description=%s" % (disk.name, disk.alias, disk.id, disk.interface, disk.status, disk.actual_size, disk.description))
+
+
+logger.info("Getting the disk service")
+vm_service = vms_service.vm_service(vm.id)
+disk_attachments_service = vm_service.disk_attachments_service()
+
+logger.info("Starting disk to appear")
+while True:
+    logger.info("Getting disk attatchment for %s", disk.name)
+    disk_attachments = disk_attachments_service.list(search='name=%s' % disk.name)
+    if len(disk_attachments):
+        break
+
+logger.info("len disk_attachments=%s" % len(disk_attachments))
+
+disk = disk_attachments[0]
+logger.info("name=%s, id=%s, interface=%s" % (disk.name, disk.id, disk.interface))
+
+disk_attachment_service = disk_attachments_service.attachment_service(disk.id)
+
+#pprint(dir(disk_attachment_service))
+#disk_service = disks_service.disk_service(disk.id)
+
+
+#disk_attachment_service = vms_service.vm_service(vm.id).disk_attachment_service()
+
+
+disk_attachment_service.update(
+  disk_attachment=types.DiskAttachment(
+    interface=types.DiskInterface.VIRTIO_SCSI
+  )
+)
+
+# logger.info("Getting the disk service for the new disk")
+# disk_service = disks_service.disk_service(disk_attachment.disk.id)
+
+
+
+# Close the connection to the server:
+connection.close()
+
+
+EOF

@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "fef0fac0-bbd1-4bdf-907b-6c633ac0e089", 
+    "key": "ovirtvmcomment", 
+    "name": "oVirt: VM Comment", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

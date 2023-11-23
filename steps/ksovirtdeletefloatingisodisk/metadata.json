@@ -1,11 +1,12 @@
 {
+    "actionOnStepFail": null, 
     "enabled": true, 
     "externalUuid4": "fcd2dbc6-786e-4cd0-8ec1-b449755f784b", 
     "interpreter": 1, 
     "key": "ksovirtdeletefloatingisodisk", 
     "name": "KS oVirt Delete Floating ISO Disk", 
-    "osCredKey": "linuxattuneuser", 
-    "serverKey": "attuneosbuildserver", 
+    "osCredKey": "kickstartworkerbuildlinuxuser", 
+    "serverKey": "kickstartworkerlinuxnode", 
     "successExitCode": 0, 
     "type": "com.servertribe.attune.tuples.StepSshTuple"
 }

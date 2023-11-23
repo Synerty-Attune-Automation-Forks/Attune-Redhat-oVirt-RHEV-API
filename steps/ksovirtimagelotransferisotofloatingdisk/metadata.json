@@ -1,11 +1,12 @@
 {
+    "actionOnStepFail": null, 
     "enabled": true, 
-    "externalUuid4": "71d614df-34f6-429b-a6a7-446382ddbb6c", 
+    "externalUuid4": "6f2daa71-e275-4725-9712-c140907f55cd", 
     "interpreter": 1, 
     "key": "ksovirtimagelotransferisotofloatingdisk", 
     "name": "KS oVirt ImagelO Transfer ISO To Floating Disk", 
-    "osCredKey": "linuxattuneuser", 
-    "serverKey": "attuneosbuildserver", 
+    "osCredKey": "kickstartworkerbuildlinuxuser", 
+    "serverKey": "kickstartworkerlinuxnode", 
     "successExitCode": 0, 
     "type": "com.servertribe.attune.tuples.StepSshTuple"
 }

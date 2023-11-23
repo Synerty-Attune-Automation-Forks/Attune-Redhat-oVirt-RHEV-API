@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": null, 
+    "enabled": true, 
+    "externalUuid4": "d69e9ef2-3737-4b90-9fff-d9bbcc0667aa", 
+    "interpreter": 1, 
+    "key": "lincleanbuildfiles", 
+    "name": "LIN Clean Build Files", 
+    "osCredKey": "kickstartworkerbuildlinuxuser", 
+    "serverKey": "kickstartworkerlinuxnode", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

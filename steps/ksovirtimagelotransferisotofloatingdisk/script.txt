@@ -1,3 +1,4 @@
+export PATH="/home/attune/qemu-img-6.2/bin:$PATH"
 export PATH=~/ks_ovirt_py_venv/bin:$PATH
 
 python3 <<"EOF"
@@ -36,7 +37,7 @@ system_service = connection.system_service()
 logger.info("Getting the disks service for the new disk")
 disks_service = system_service.disks_service()
 
-diskName='kickstart_{targetServer.fqn}.iso'
+diskName='kickstart_{kickstartedNode.fqn}.iso'
 search_string="name=%s" % diskName
 
 logger.info("Getting the disks service for the new disk")

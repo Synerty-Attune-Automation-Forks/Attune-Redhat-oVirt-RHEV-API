@@ -206,8 +206,8 @@
         
 
                     <p class="text-muted pt-2">
-                        <a href="#kscleanbuildfiles">
-                            <strong>Step 1 -</strong> KS Clean Build Files
+                        <a href="#lincleanbuildfiles">
+                            <strong>Step 1 -</strong> LIN Clean Build Files
                         </a>
                     </p>
 
@@ -263,8 +263,8 @@
         
 
                     <p class="text-muted pt-2">
-                        <a href="#ksovirtrecreatevirtualmachinecreate">
-                            <strong>Step 6 -</strong> KS oVirt Recreate Virtual Machine - Create
+                        <a href="#ovirtrecreatevirtualmachine">
+                            <strong>Step 6 -</strong> oVirt Recreate Virtual Machine
                         </a>
                     </p>
     
@@ -368,8 +368,8 @@
         
 
                     <p class="text-muted pt-2">
-                        <a href="#kscleanbuildfiles">
-                            <strong>Step 11 -</strong> KS Clean Build Files
+                        <a href="#lincleanbuildfiles">
+                            <strong>Step 11 -</strong> LIN Clean Build Files
                         </a>
                     </p>
 
@@ -488,9 +488,9 @@
 
 
                     <div class="row pt-5">
-                        <h3 id="kscleanbuildfiles">
-                            <a href="#kscleanbuildfiles">
-                                <strong>Step 1 -</strong> KS Clean Build Files
+                        <h3 id="lincleanbuildfiles">
+                            <a href="#lincleanbuildfiles">
+                                <strong>Step 1 -</strong> LIN Clean Build Files
                             </a>
                         </h3>
                     </div>
@@ -519,7 +519,7 @@
                         </div>
                         <div class="row py-1">
                             <code class="language-sql">
-ssh {linuxattuneuser}@{attuneosbuildserver}
+ssh {kickstartworkerbuildlinuxuser}@{kickstartworkerlinuxnode}
                             </code>
                         </div>
 
@@ -538,11 +538,11 @@ ssh {linuxattuneuser}@{attuneosbuildserver}
         <div class="col px-0">
             <pre>
                 <code class="language-sql py-0">
-DIR=&quot;{ksVmwareAttuneBaseDir}/build-{targetServer.fqn}&quot;
+DIR=&quot;{ksAttuneBaseDir}/build-{kickstartedNode.fqn}&quot;
 [[ -d ${DIR} ]] &amp;&amp; rm -rf ${DIR} &amp;&amp; echo &quot;Removed ${DIR}&quot; || \
     echo &quot;No directory to remove.&quot;
 
-ISO=&quot;{ksVmwareAttuneBaseDir}/kickstart_{targetServer.fqn}.iso&quot;
+ISO=&quot;{ksAttuneBaseDir}/kickstart_{kickstartedNode.fqn}.iso&quot;
 [[ -f ${ISO} ]] &amp;&amp; rm -fv ${ISO} || echo &quot;No ISO to remove.&quot;
                 </code>
             </pre>
@@ -581,7 +581,18 @@ ISO=&quot;{ksVmwareAttuneBaseDir}/kickstart_{targetServer.fqn}.iso&quot;
 
 
 
-    
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {linuxattuneuser}@{attuneosbuildserver}
+                            </code>
+                        </div>
+
 
     
 
@@ -898,7 +909,18 @@ EOF
 
 
 
-    
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {kickstartworkerbuildlinuxuser}@{kickstartworkerlinuxnode}
+                            </code>
+                        </div>
+
 
 
     
@@ -955,18 +977,18 @@ vms_service = system_service.vms_service()
 logger.info(&quot;Getting the disks service for the new disk&quot;)
 disks_service = system_service.disks_service()
 
-logger.info(&quot;Searchig for VM &#x27;name={targetServer.fqn}&#x27;&quot;)
-vmSearch = vms_service.list(search=&#x27;name={targetServer.fqn}&#x27;)
+logger.info(&quot;Searchig for VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
+vmSearch = vms_service.list(search=&#x27;name={kickstartedNode.fqn}&#x27;)
 
 if not len(vmSearch):
-    logger.info(&quot;VM &#x27;name={targetServer.fqn}&#x27; doesn&#x27;t exist, exiting&quot;)
+    logger.info(&quot;VM &#x27;name={kickstartedNode.fqn}&#x27; doesn&#x27;t exist, exiting&quot;)
     exit(0)
 
-logger.info(&quot;Found VM &#x27;name={targetServer.fqn}&#x27;&quot;)
+logger.info(&quot;Found VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
 vm = vmSearch[0]
 
 
-diskName=&#x27;kickstart_{targetServer.fqn}.iso&#x27;
+diskName=&#x27;kickstart_{kickstartedNode.fqn}.iso&#x27;
 search_string=&quot;name=%s&quot; % diskName
 print(&quot;search_string=%s&quot; % search_string)
 
@@ -999,9 +1021,9 @@ EOF
 
 
                     <div class="row pt-5">
-                        <h3 id="ksovirtrecreatevirtualmachinecreate">
-                            <a href="#ksovirtrecreatevirtualmachinecreate">
-                                <strong>Step 6 -</strong> KS oVirt Recreate Virtual Machine - Create
+                        <h3 id="ovirtrecreatevirtualmachine">
+                            <a href="#ovirtrecreatevirtualmachine">
+                                <strong>Step 6 -</strong> oVirt Recreate Virtual Machine
                             </a>
                         </h3>
                     </div>
@@ -1088,6 +1110,7 @@ connection = sdk.Connection(
     url=&#x27;https://{ovirtEngineServer.fqn}/ovirt-engine/api&#x27;,
     username=&#x27;{ovirtEngineApiUser.user}&#x27;,
     password=&#x27;{ovirtEngineApiUser.password}&#x27;,
+#    ca_file=&#x27;ca.pem&#x27;,
     insecure=True,
     debug=True,
     log=logger,
@@ -1102,9 +1125,9 @@ logger.info(&quot;Getting vms_service&quot;)
 vms_service = system_service.vms_service()
 
 # Find the VM:
-logger.info(&quot;Searchig for VM &#x27;name={targetServer.fqn}&#x27;&quot;)
+logger.info(&quot;Searchig for VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
 try:
-    vm = vms_service.list(search=&#x27;name={targetServer.fqn}&#x27;)[0]
+    vm = vms_service.list(search=&#x27;name={kickstartedNode.fqn}&#x27;)[0]
     
 except IndexError:
     logger.info(&quot;VM must not exist yet&quot;)
@@ -1231,7 +1254,7 @@ vms_service = system_service.vms_service()
 # Use the &quot;add&quot; method to create a new virtual machine:
 vms_service.add(
     types.Vm(
-        name=&#x27;{targetServer.fqn}&#x27;,
+        name=&#x27;{kickstartedNode.fqn}&#x27;,
         time_zone=types.TimeZone(name=&quot;{ovirtTimeZone}&quot;),
         cluster=types.Cluster(
             name=&#x27;{ovirtClusterName}&#x27;,
@@ -1251,8 +1274,13 @@ vms_service.add(
                 sockets=1,
                 threads=1
             )
-        )
-    ),
+        ),
+        bios=types.Bios (
+            type=types.BiosType.{ovirtBiosType}
+        ),
+        comment=&quot;{ovirtVmComment}&quot;,
+        description=&quot;{ovirtVmDescription}&quot;
+    )
 )
 
 # Close the connection to the server:
@@ -1341,23 +1369,23 @@ system_service = connection.system_service()
 logger.info(&quot;Getting vms_service&quot;)
 vms_service = system_service.vms_service()
 
-logger.info(&quot;Searchig for VM &#x27;name={targetServer.fqn}&#x27;&quot;)
-vm = vms_service.list(search=&#x27;name={targetServer.fqn}&#x27;)[0]
-logger.info(&quot;Found VM &#x27;name={targetServer.fqn}&#x27;&quot;)
+logger.info(&quot;Searchig for VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
+vm = vms_service.list(search=&#x27;name={kickstartedNode.fqn}&#x27;)[0]
+logger.info(&quot;Found VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
 
 logger.info(&quot;Getting the disk service&quot;)
 disk_attachments_service = vms_service.vm_service(vm.id).disk_attachments_service()
 
-diskName=&#x27;{targetServer.fqn}-disk0&#x27;
+diskName=&#x27;{kickstartedNode.fqn}-disk0&#x27;
 
 logger.info(&quot;Attaching the new disk&quot;)
 disk_attachment = disk_attachments_service.add(
     types.DiskAttachment(
         disk=types.Disk(
             name=diskName,
-            description=&#x27;{targetServer.fqn}-disk0&#x27;,
+            description=&#x27;{kickstartedNode.fqn}-disk0&#x27;,
             format=types.DiskFormat.COW,
-            provisioned_size=50 * 2**30,
+            provisioned_size=100 * 2**30,
             storage_domains=[
                 types.StorageDomain(
                     name=&#x27;{ovirtDiskStorageName}&#x27;,
@@ -1365,7 +1393,7 @@ disk_attachment = disk_attachments_service.add(
             ],
         ),
         interface=types.DiskInterface.{ovirtDiskInterface},
-        bootable=False,
+        bootable=True,
         active=True,
     ),
 )
@@ -1394,7 +1422,7 @@ while True:
     logger.info(&quot;Waiting for disk to become online&quot;)
     time.sleep(5)
 
-logger.info(&quot;Wiating for attatchment status&quot;)
+logger.info(&quot;Waiting for attachment status&quot;)
 while True:
     logger.info(&quot;Getting disk attatchment for %s&quot;, diskName)
     disk = connection.follow_link(disk_attachment.disk)
@@ -1467,20 +1495,15 @@ EOF
             <pre>
                 <code class="language-sql py-0">
 export PATH=~/ks_ovirt_py_venv/bin:$PATH
-
 python3 &lt;&lt;&quot;EOF&quot;
 import logging
 import time
 import sys
-
 import ovirtsdk4 as sdk
 import ovirtsdk4.types as types
-
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logger = logging.getLogger(&quot;Attune&quot;)
-
 # This example will connect to the server and create a new virtual machine:
-
 # Create the connection to the server:
 connection = sdk.Connection(
     url=&#x27;https://{ovirtEngineServer.fqn}/ovirt-engine/api&#x27;,
@@ -1491,87 +1514,76 @@ connection = sdk.Connection(
     log=logger,
 )
 logger.info(&quot;Connection Successful&quot;)
-
 # Find the service that manages VMs:
 logger.info(&quot;Getting system_service&quot;)
 system_service = connection.system_service()
-
 logger.info(&quot;Getting vms_service&quot;)
 vms_service = system_service.vms_service()
-
 # Find the VM:
-logger.info(&quot;Searchig for VM &#x27;name={targetServer.fqn}&#x27;&quot;)
-vm = vms_service.list(search=&#x27;name={targetServer.fqn}&#x27;)[0]
-
+logger.info(&quot;Searchig for VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
+vm = vms_service.list(search=&#x27;name={kickstartedNode.fqn}&#x27;)[0]
 # In order to specify the network that the new interface will be
 # connected to we need to specify the identifier of the virtual network
 # interface profile, so we need to find it. We can have duplicate names
 # for vnic profiles in different clusters, so we must also find first the
 # network by datacenter and cluster:
-
 logger.info(&quot;Getting Cluster Service&quot;)
 cluster = system_service.clusters_service().cluster_service(vm.cluster.id).get()
-
 logger.info(&quot;Getting Data Centers Service&quot;)
 dcs_service = connection.system_service().data_centers_service()
-
-logger.info(&quot;Getting Data Center&quot;)
-dc = dcs_service.list(search=&#x27;Clusters.name=%s&#x27; % cluster.name)[0]
-
+logger.info(&quot;Finding Data Center n.name == &#x27;{ovirtDatacenterName}&#x27;&quot;)
+dc = next(
+    (n for n in dcs_service.list(search=&#x27;Clusters.name=%s&#x27; % cluster.name)
+     if n.name == &#x27;{ovirtDatacenterName}&#x27;),
+    None
+)
+if not dc:
+    logger.error(&quot;Failed to find data center&quot;)
+    exit(1)
 logger.info(&quot;Getting Networks Service&quot;)
 networks_service = dcs_service.service(dc.id).networks_service()
-
-
 logger.info(&quot;Finding Network n.name == &#x27;{ovirtNetworkName}&#x27;&quot;)
 network = next(
     (n for n in networks_service.list()
      if n.name == &#x27;{ovirtNetworkName}&#x27;),
     None
 )
-
 if not network:
     logger.error(&quot;Failed to find network&quot;)
     exit(1)
-
 logger.info(&quot;Getting Profiles Service&quot;)
 profiles_service = connection.system_service().vnic_profiles_service()
-
 logger.info(&quot;Finding Profile profile.name == &#x27;{ovirtNetworkName}&#x27;&quot;)
-profile_id = None
-for profile in profiles_service.list():
-    if profile.name == &#x27;{ovirtNetworkName}&#x27;:
-        profile_id = profile.id
-        break
-
-if not profile_id:
-    logger.error(&quot;Failed to find profile&quot;)
+profiles = [
+    p for p in profiles_service.list() 
+    if p.name == &#x27;{ovirtNetworkName}&#x27; and p.network.id == network.id
+]
+if profiles and len(profiles) != 1:
+    logger.error(&quot;Failed to find exactly one network profile, found %s&quot;, 
+        len(profiles))
     exit(1)
+    
+profile = profiles[0]
     
 # Locate the service that manages the network interface cards of the
 # virtual machine:
 logger.info(&quot;Getting NICs Service&quot;)
 nics_service = vms_service.vm_service(vm.id).nics_service()
-
 # Use the &quot;add&quot; method of the network interface cards service to add the
 # new network interface card:
-
 logger.info(&quot;Adding NIC name=&#x27;vnet0&#x27;&quot;)
 nics_service.add(
     types.Nic(
         name=&#x27;vnet0&#x27;,
-        description=&#x27;{targetServer.fqn}-vnet0&#x27;,
+        description=&#x27;{kickstartedNode.fqn}-vnet0&#x27;,
         interface=types.NicInterface.{oVirtNicInterface},
         vnic_profile=types.VnicProfile(
-            id=profile_id,
+            id=profile.id,
         ),
     ),
 )
-
-
 # Close the connection to the server:
 connection.close()
-
-
 EOF
                 </code>
             </pre>
@@ -1644,10 +1656,10 @@ logger = logging.getLogger(&quot;Attune&quot;)
 # This example will connect to the server and create a new floating disk for the ISO.
 
 # get the size of the disk required to fit the ISO.
-os.chdir(&quot;{ksVmwareAttuneBaseDir}&quot;)
+os.chdir(&quot;{ksAttuneBaseDir}&quot;)
 cwd = os.getcwd()
 
-diskName=&#x27;kickstart_{targetServer.fqn}.iso&#x27;
+diskName=&#x27;kickstart_{kickstartedNode.fqn}.iso&#x27;
 # Add 1kB buffer to disk, disk_size is in bytes
 disk_size = os.path.getsize(diskName) + 1024*1024
 
@@ -1756,6 +1768,7 @@ EOF
         <div class="col px-0">
             <pre>
                 <code class="language-sql py-0">
+export PATH=&quot;/home/attune/qemu-img-6.2/bin:$PATH&quot;
 export PATH=~/ks_ovirt_py_venv/bin:$PATH
 
 python3 &lt;&lt;&quot;EOF&quot;
@@ -1794,7 +1807,7 @@ system_service = connection.system_service()
 logger.info(&quot;Getting the disks service for the new disk&quot;)
 disks_service = system_service.disks_service()
 
-diskName=&#x27;kickstart_{targetServer.fqn}.iso&#x27;
+diskName=&#x27;kickstart_{kickstartedNode.fqn}.iso&#x27;
 search_string=&quot;name=%s&quot; % diskName
 
 logger.info(&quot;Getting the disks service for the new disk&quot;)
@@ -1951,8 +1964,8 @@ logger.info(&quot;Getting vms_service&quot;)
 vms_service = system_service.vms_service()
 
 # Find the VM:
-logger.info(&quot;Searchig for VM &#x27;name={targetServer.fqn}&#x27;&quot;)
-vm = vms_service.list(search=&#x27;name={targetServer.fqn}&#x27;)[0]
+logger.info(&quot;Searchig for VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
+vm = vms_service.list(search=&#x27;name={kickstartedNode.fqn}&#x27;)[0]
 
 logger.info(&quot;Getting storage_domains_services&quot;)
 sds_service = system_service.storage_domains_service()
@@ -1978,7 +1991,8 @@ logger.info(&quot;Get the CDROM service for the first drive&quot;)
 cdrom_service = cdroms_service.cdrom_service(cdrom.id)
 
 # Find the ISO disk to attach as CD ROM
-diskName=&#x27;kickstart_{targetServer.fqn}.iso&#x27;
+diskName=&#x27;kickstart_{kickstartedNode.fqn}.iso&#x27;
+
 search_string=&quot;name=%s&quot; % diskName
 
 logger.info(&quot;Getting the disks service&quot;)
@@ -2092,8 +2106,8 @@ system_service = connection.system_service()
 logger.info(&quot;Getting vms_service&quot;)
 vms_service = system_service.vms_service()
 
-logger.info(&quot;Searchig for VM &#x27;name={targetServer.fqn}&#x27;&quot;)
-vm = vms_service.list(search=&#x27;name={targetServer.fqn}&#x27;)[0]
+logger.info(&quot;Searchig for VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
+vm = vms_service.list(search=&#x27;name={kickstartedNode.fqn}&#x27;)[0]
 
 logger.info(&quot;Getting VM Service for VM ID=%s&quot; % vm.id)
 vm_service = vms_service.vm_service(vm.id)
@@ -2376,9 +2390,9 @@ yum repolist -v enabled
 
 
                     <div class="row pt-5">
-                        <h3 id="kscleanbuildfiles">
-                            <a href="#kscleanbuildfiles">
-                                <strong>Step 11 -</strong> KS Clean Build Files
+                        <h3 id="lincleanbuildfiles">
+                            <a href="#lincleanbuildfiles">
+                                <strong>Step 11 -</strong> LIN Clean Build Files
                             </a>
                         </h3>
                     </div>
@@ -2407,7 +2421,7 @@ yum repolist -v enabled
                         </div>
                         <div class="row py-1">
                             <code class="language-sql">
-ssh {linuxattuneuser}@{attuneosbuildserver}
+ssh {kickstartworkerbuildlinuxuser}@{kickstartworkerlinuxnode}
                             </code>
                         </div>
 
@@ -2426,11 +2440,11 @@ ssh {linuxattuneuser}@{attuneosbuildserver}
         <div class="col px-0">
             <pre>
                 <code class="language-sql py-0">
-DIR=&quot;{ksVmwareAttuneBaseDir}/build-{targetServer.fqn}&quot;
+DIR=&quot;{ksAttuneBaseDir}/build-{kickstartedNode.fqn}&quot;
 [[ -d ${DIR} ]] &amp;&amp; rm -rf ${DIR} &amp;&amp; echo &quot;Removed ${DIR}&quot; || \
     echo &quot;No directory to remove.&quot;
 
-ISO=&quot;{ksVmwareAttuneBaseDir}/kickstart_{targetServer.fqn}.iso&quot;
+ISO=&quot;{ksAttuneBaseDir}/kickstart_{kickstartedNode.fqn}.iso&quot;
 [[ -f ${ISO} ]] &amp;&amp; rm -fv ${ISO} || echo &quot;No ISO to remove.&quot;
                 </code>
             </pre>
@@ -2498,7 +2512,18 @@ ISO=&quot;{ksVmwareAttuneBaseDir}/kickstart_{targetServer.fqn}.iso&quot;
 
 
 
-    
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {linuxattuneuser}@{attuneosbuildserver}
+                            </code>
+                        </div>
+
 
 
     
@@ -2615,7 +2640,18 @@ EOF
 
 
 
-    
+
+                        <div class="row">
+                            <p>
+                                Connect via ssh:
+                            </p>
+                        </div>
+                        <div class="row py-1">
+                            <code class="language-sql">
+ssh {kickstartworkerbuildlinuxuser}@{kickstartworkerlinuxnode}
+                            </code>
+                        </div>
+
 
 
     
@@ -2672,18 +2708,18 @@ vms_service = system_service.vms_service()
 logger.info(&quot;Getting the disks service for the new disk&quot;)
 disks_service = system_service.disks_service()
 
-logger.info(&quot;Searchig for VM &#x27;name={targetServer.fqn}&#x27;&quot;)
-vmSearch = vms_service.list(search=&#x27;name={targetServer.fqn}&#x27;)
+logger.info(&quot;Searchig for VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
+vmSearch = vms_service.list(search=&#x27;name={kickstartedNode.fqn}&#x27;)
 
 if not len(vmSearch):
-    logger.info(&quot;VM &#x27;name={targetServer.fqn}&#x27; doesn&#x27;t exist, exiting&quot;)
+    logger.info(&quot;VM &#x27;name={kickstartedNode.fqn}&#x27; doesn&#x27;t exist, exiting&quot;)
     exit(0)
 
-logger.info(&quot;Found VM &#x27;name={targetServer.fqn}&#x27;&quot;)
+logger.info(&quot;Found VM &#x27;name={kickstartedNode.fqn}&#x27;&quot;)
 vm = vmSearch[0]
 
 
-diskName=&#x27;kickstart_{targetServer.fqn}.iso&#x27;
+diskName=&#x27;kickstart_{kickstartedNode.fqn}.iso&#x27;
 search_string=&quot;name=%s&quot; % diskName
 print(&quot;search_string=%s&quot; % search_string)
 

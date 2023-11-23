@@ -33,7 +33,7 @@ vms_service = system_service.vms_service()
 # Use the "add" method to create a new virtual machine:
 vms_service.add(
     types.Vm(
-        name='{targetServer.fqn}',
+        name='{kickstartedNode.fqn}',
         time_zone=types.TimeZone(name="{ovirtTimeZone}"),
         cluster=types.Cluster(
             name='{ovirtClusterName}',
@@ -53,8 +53,13 @@ vms_service.add(
                 sockets=1,
                 threads=1
             )
-        )
-    ),
+        ),
+        bios=types.Bios (
+            type=types.BiosType.{ovirtBiosType}
+        ),
+        comment="{ovirtVmComment}",
+        description="{ovirtVmDescription}"
+    )
 )
 
 # Close the connection to the server:

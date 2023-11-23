@@ -1,0 +1,1 @@
+Input to the comment text field in the vm struct https://ovirt.github.io/ovirt-engine-api-model/4.5/#types/vm.

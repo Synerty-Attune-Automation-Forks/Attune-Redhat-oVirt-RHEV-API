@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "abcc7184-5fd8-456d-82df-f714553fe91b", 
+    "key": "ksattunebasedir", 
+    "name": "KS: Attune Base Dir", 
+    "showInPlan": false, 
+    "type": "c.s.s.b.phv.Text"
+}

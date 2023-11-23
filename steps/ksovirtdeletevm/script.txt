@@ -19,6 +19,7 @@ connection = sdk.Connection(
     url='https://{ovirtEngineServer.fqn}/ovirt-engine/api',
     username='{ovirtEngineApiUser.user}',
     password='{ovirtEngineApiUser.password}',
+#    ca_file='ca.pem',
     insecure=True,
     debug=True,
     log=logger,
@@ -33,9 +34,9 @@ logger.info("Getting vms_service")
 vms_service = system_service.vms_service()
 
 # Find the VM:
-logger.info("Searchig for VM 'name={targetServer.fqn}'")
+logger.info("Searchig for VM 'name={kickstartedNode.fqn}'")
 try:
-    vm = vms_service.list(search='name={targetServer.fqn}')[0]
+    vm = vms_service.list(search='name={kickstartedNode.fqn}')[0]
     
 except IndexError:
     logger.info("VM must not exist yet")

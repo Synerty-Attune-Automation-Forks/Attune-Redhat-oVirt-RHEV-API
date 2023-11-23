@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": null, 
+    "enabled": true, 
+    "externalUuid4": "577ccebd-1e68-4d25-83a0-642b3094cf98", 
+    "interpreter": 1, 
+    "key": "ovirtstartvm", 
+    "name": "oVirt Start VM", 
+    "osCredKey": "kickstartworkerbuildlinuxuser", 
+    "serverKey": "kickstartworkerlinuxnode", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

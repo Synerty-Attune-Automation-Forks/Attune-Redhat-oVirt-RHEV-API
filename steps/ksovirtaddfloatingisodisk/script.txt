@@ -16,10 +16,10 @@ logger = logging.getLogger("Attune")
 # This example will connect to the server and create a new floating disk for the ISO.
 
 # get the size of the disk required to fit the ISO.
-os.chdir("{ksVmwareAttuneBaseDir}")
+os.chdir("{ksAttuneBaseDir}")
 cwd = os.getcwd()
 
-diskName='kickstart_{targetServer.fqn}.iso'
+diskName='kickstart_{kickstartedNode.fqn}.iso'
 # Add 1kB buffer to disk, disk_size is in bytes
 disk_size = os.path.getsize(diskName) + 1024*1024
 
