@@ -8,27 +8,45 @@ FILE="$(echo "$FILE" | sed 's/[*]/X/g;s/,/_/g;s/ //g;')"
 echo "Checking VM Name List file"
 ls -l ${FILE} > /dev/null
 
+function findFile() {
+    # Find files in the current directory or subdirectory of the VM name
+    #
+    vmName="$1"
+    find "$vmName" -type f 2> /dev/null || true
+    find . -type f -name "*${vmName}*" 2> /dev/null || true
+}
+
+function deleteFile() {
+    # Delete files in the current directory or subdirectory of the VM name
+    #
+    vmName="$1"
+    find "$vmName" -type f -delete 2> /dev/null || true
+    find . -type f -name "*${vmName}*" -delete 2> /dev/null || true
+}
+
 while IFS= read -r vmName
 do
+    # Skip rows that are empty or white space
     if [ -z ""$vmName ]
     then
         continue
     fi
     
-    OVA_NAME="${vmName}.ova"
+    echo "CHECKING for old $vmName exports "
     
-    ls -l ${OVA_NAME}* 2> /dev/null | true
+    FILES=$(findFile "$vmName")
     
-    for fileToRm in ${OVA_NAME}*
-    do
-        if [ "${fileToRm}" = "${OVA_NAME}*" ]
-        then
-            echo "GOOD - No files for ${vmName} to cleanup"
-            continue
-        fi
-        
-        echo "Removing ${fileToRm}"
-        rm -vf "${fileToRm}"
-    done
+    if [ -n "${FILES}" ]
+    then
+        echo "Removing ${FILES}"
+        deleteFile "$vmName"
+    fi
+
+    if [ -d "$vmName" ]
+    then
+        echo "Removing directory ${vmName}"
+        rmdir "${vmName}"
+    fi
+
 
 done <<< $(cat ${FILE} | cut -d',' -f1)

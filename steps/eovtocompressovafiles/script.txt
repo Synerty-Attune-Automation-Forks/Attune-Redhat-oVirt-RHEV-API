@@ -50,7 +50,7 @@ do
     done
     
     echo "Compressing $(ls -lh ${OVA_NAME})"
-    WAS=$(ls -lh "${OVA_NAME}")
+    WAS=$(ls -lh "${OVA_NAME}" | cut -f5 -d' ')
     
     # Compressing
     compress "${OVA_NAME}"
@@ -59,6 +59,6 @@ do
     
     mv -v "${OVA_NAME}.${EXT}.tmp" "${OVA_NAME}.${EXT}"
     
-    echo "Reduced size from ${WAS} to $(ls -lh ${OVA_NAME}.${EXT})"
+    echo "Reduced size from ${WAS} to $(ls -lh ${OVA_NAME}.${EXT} | cut -f5 -d' ')"
     
 done <<< $(cat ${FILE} | cut -d',' -f1)

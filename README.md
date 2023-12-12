@@ -69,6 +69,9 @@ This Project contains the following Blueprints.
 ### KS oVirt Delete VM - Group
 
 
+### KS oVirt Deploy Drivers - group
+
+
 ### LIN Clean Build Files - Group
 
 
@@ -76,9 +79,6 @@ This Project contains the following Blueprints.
 
 
 ### oVirt Set Disk Interface to VIRTIO_SCSI - Group
-
-
-### KS oVirt Deploy Drivers - group
 
 
 

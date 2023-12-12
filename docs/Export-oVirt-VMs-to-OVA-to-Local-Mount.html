@@ -706,28 +706,46 @@ FILE=&quot;$(echo &quot;$FILE&quot; | sed &#x27;s/[*]/X/g;s/,/_/g;s/ //g;&#x27;)
 echo &quot;Checking VM Name List file&quot;
 ls -l ${FILE} &gt; /dev/null
 
+function findFile() {
+    # Find files in the current directory or subdirectory of the VM name
+    #
+    vmName=&quot;$1&quot;
+    find &quot;$vmName&quot; -type f 2&gt; /dev/null || true
+    find . -type f -name &quot;*${vmName}*&quot; 2&gt; /dev/null || true
+}
+
+function deleteFile() {
+    # Delete files in the current directory or subdirectory of the VM name
+    #
+    vmName=&quot;$1&quot;
+    find &quot;$vmName&quot; -type f -delete 2&gt; /dev/null || true
+    find . -type f -name &quot;*${vmName}*&quot; -delete 2&gt; /dev/null || true
+}
+
 while IFS= read -r vmName
 do
+    # Skip rows that are empty or white space
     if [ -z &quot;&quot;$vmName ]
     then
         continue
     fi
     
-    OVA_NAME=&quot;${vmName}.ova&quot;
+    echo &quot;CHECKING for old $vmName exports &quot;
     
-    ls -l ${OVA_NAME}* 2&gt; /dev/null | true
+    FILES=$(findFile &quot;$vmName&quot;)
     
-    for fileToRm in ${OVA_NAME}*
-    do
-        if [ &quot;${fileToRm}&quot; = &quot;${OVA_NAME}*&quot; ]
-        then
-            echo &quot;GOOD - No files for ${vmName} to cleanup&quot;
-            continue
-        fi
-        
-        echo &quot;Removing ${fileToRm}&quot;
-        rm -vf &quot;${fileToRm}&quot;
-    done
+    if [ -n &quot;${FILES}&quot; ]
+    then
+        echo &quot;Removing ${FILES}&quot;
+        deleteFile &quot;$vmName&quot;
+    fi
+
+    if [ -d &quot;$vmName&quot; ]
+    then
+        echo &quot;Removing directory ${vmName}&quot;
+        rmdir &quot;${vmName}&quot;
+    fi
+
 
 done &lt;&lt;&lt; $(cat ${FILE} | cut -d&#x27;,&#x27; -f1)
                 </code>
@@ -1063,7 +1081,7 @@ do
     done
     
     echo &quot;Compressing $(ls -lh ${OVA_NAME})&quot;
-    WAS=$(ls -lh &quot;${OVA_NAME}&quot;)
+    WAS=$(ls -lh &quot;${OVA_NAME}&quot; | cut -f5 -d&#x27; &#x27;)
     
     # Compressing
     compress &quot;${OVA_NAME}&quot;
@@ -1072,7 +1090,7 @@ do
     
     mv -v &quot;${OVA_NAME}.${EXT}.tmp&quot; &quot;${OVA_NAME}.${EXT}&quot;
     
-    echo &quot;Reduced size from ${WAS} to $(ls -lh ${OVA_NAME}.${EXT})&quot;
+    echo &quot;Reduced size from ${WAS} to $(ls -lh ${OVA_NAME}.${EXT} | cut -f5 -d&#x27; &#x27;)&quot;
     
 done &lt;&lt;&lt; $(cat ${FILE} | cut -d&#x27;,&#x27; -f1)
                 </code>
@@ -1334,6 +1352,16 @@ do
             done
     
         done
+
+        # By this point all we want to keep is kept, discard the rest.
+        echo &quot;Discading all remaining files, these should all be older than $day day(s) ago.&quot;
+        for discard in $(find . -type f -daystart -maxdepth 1 )
+        do
+            echo &quot;Discading file: ${discard}&quot;
+            mv &quot;${discard}&quot; rotate_discard
+        done
+        
+        
         
         echo &quot;Finished sorting...&quot;
         ls -ltr $(find . -type f)
