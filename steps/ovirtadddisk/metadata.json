@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": "stop", 
+    "enabled": true, 
+    "externalUuid4": "ee17cdc3-d329-4455-97fe-a0db513ae55c", 
+    "interpreter": 1, 
+    "key": "ovirtadddisk", 
+    "name": "oVirt Add Disk", 
+    "osCredKey": "kickstartworkerbuildlinuxuser", 
+    "serverKey": "kickstartworkerlinuxnode", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

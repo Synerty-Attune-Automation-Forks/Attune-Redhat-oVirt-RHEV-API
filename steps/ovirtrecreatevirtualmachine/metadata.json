@@ -7,36 +7,31 @@
     "key": "ovirtrecreatevirtualmachine", 
     "links": [
         {
-            "order": 0, 
             "stepKey": "ksovirtdeletevm"
         }, 
         {
-            "order": 50, 
             "stepKey": "ksovirtcreatevm"
         }, 
         {
-            "order": 100, 
             "stepKey": "ksovirtaddosdisk"
         }, 
         {
-            "order": 150, 
             "stepKey": "ksovirtaddnic"
         }, 
         {
-            "order": 200, 
             "stepKey": "ksovirtaddfloatingisodisk"
         }, 
         {
-            "order": 250, 
             "stepKey": "ksovirtimagelotransferisotofloatingdisk"
         }, 
         {
-            "order": 300, 
             "stepKey": "ksovirtloaddatastorageisointovm"
         }, 
         {
-            "order": 350, 
             "stepKey": "ksovirtboottoiso"
+        }, 
+        {
+            "stepKey": "ksovirtwaitforosinstall"
         }
     ], 
     "name": "oVirt Recreate Virtual Machine", 

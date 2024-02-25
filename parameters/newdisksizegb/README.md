@@ -1,0 +1,1 @@
+The size of the new disk in GB, for example, 50

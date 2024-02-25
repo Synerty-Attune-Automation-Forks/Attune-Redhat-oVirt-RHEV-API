@@ -1,0 +1,13 @@
+{
+    "actionOnStepFail": "stop", 
+    "enabled": true, 
+    "externalUuid4": "43aaebfa-bb05-41b0-a827-77cf84a5b621", 
+    "key": "ksovirtwaitforosinstall", 
+    "minDowntime": 0, 
+    "name": "KS oVirt Wait for OS Install", 
+    "postWait": 5, 
+    "preWait": 10, 
+    "serverKey": "kickstartednode", 
+    "tcpPort": 22, 
+    "type": "com.servertribe.attune.tuples.StepTcpPingTuple"
+}
