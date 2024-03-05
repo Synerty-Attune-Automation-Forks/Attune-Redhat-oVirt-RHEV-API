@@ -1,6 +1,0 @@
-{
-    "externalUuid4": "735110ce-dd82-4f7e-a030-068dea2a60d1", 
-    "key": "centos8kickstartdvdconfig", 
-    "name": "CentOS8 Kickstart DVD Config", 
-    "type": "com.servertribe.attune.tuples.FileArchiveVersionedTuple"
-}
