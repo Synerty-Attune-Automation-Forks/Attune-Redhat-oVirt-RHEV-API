@@ -1,1 +1,0 @@
-https://github.com/oVirt/ovirt-engine-sdk/blob/master/sdk/examples/add_vm.py
