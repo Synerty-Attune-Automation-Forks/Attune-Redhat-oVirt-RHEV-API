@@ -1,0 +1,39 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "71b73598-1c8f-4293-8de8-c80d50d5401e", 
+    "isBlueprint": true, 
+    "key": "ovirtrecreatevirtualmachine", 
+    "links": [
+        {
+            "stepKey": "ksovirtdeletevm"
+        }, 
+        {
+            "stepKey": "ksovirtcreatevm"
+        }, 
+        {
+            "stepKey": "ksovirtaddosdisk"
+        }, 
+        {
+            "stepKey": "ksovirtaddnic"
+        }, 
+        {
+            "stepKey": "ksovirtaddfloatingisodisk"
+        }, 
+        {
+            "stepKey": "ksovirtimagelotransferisotofloatingdisk"
+        }, 
+        {
+            "stepKey": "ksovirtloaddatastorageisointovm"
+        }, 
+        {
+            "stepKey": "ksovirtboottoiso"
+        }, 
+        {
+            "stepKey": "ksovirtwaitforosinstall"
+        }
+    ], 
+    "name": "oVirt Recreate Virtual Machine", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}
