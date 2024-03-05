@@ -35,16 +35,28 @@ logger.info("Found VM 'name={kickstartedNode.fqn}'")
 logger.info("Getting the disk service")
 disk_attachments_service = vms_service.vm_service(vm.id).disk_attachments_service()
 
-diskName='{kickstartedNode.fqn}-disk0'
+# Get a list of existing names
+existingDiskNames = set([
+    connection.follow_link(attachment.disk).name
+    for attachment in disk_attachments_service.list()
+])
+
+nodeFqdn='{kickstartedNode.fqn}'
+start = len(existingDiskNames)
+i=0
+while "%s-disk%s" % (nodeFqdn, i) in existingDiskNames:
+    i = i + 1
+
+diskName="%s-disk%s" % (nodeFqdn, i)
 
 logger.info("Attaching the new disk")
 disk_attachment = disk_attachments_service.add(
     types.DiskAttachment(
         disk=types.Disk(
             name=diskName,
-            description='{kickstartedNode.fqn}-disk0',
+            description=diskName,
             format=types.DiskFormat.COW,
-            provisioned_size=100 * 2**30,
+            provisioned_size={newDiskSizeGb} * 2**30,
             storage_domains=[
                 types.StorageDomain(
                     name='{ovirtDiskStorageName}',
@@ -52,7 +64,7 @@ disk_attachment = disk_attachments_service.add(
             ],
         ),
         interface=types.DiskInterface.{ovirtDiskInterface},
-        bootable=True,
+        bootable=False,
         active=True,
     ),
 )

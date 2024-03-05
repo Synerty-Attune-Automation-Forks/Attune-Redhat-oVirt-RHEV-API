@@ -1,0 +1,7 @@
+{
+    "externalUuid4": "4f2688a4-e4d6-4358-851c-1991f1ce7b34", 
+    "key": "newdisksizegb", 
+    "name": "New Disk Size GB", 
+    "showInPlan": true, 
+    "type": "c.s.s.b.phv.Text"
+}

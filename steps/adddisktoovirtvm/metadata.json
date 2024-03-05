@@ -1,0 +1,16 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "93168d3a-c2f0-4b4f-b537-cb6116b536cb", 
+    "isBlueprint": true, 
+    "key": "adddisktoovirtvm", 
+    "links": [
+        {
+            "order": 50, 
+            "stepKey": "ovirtadddisk"
+        }
+    ], 
+    "name": "Add Disk to oVirt VM", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}
