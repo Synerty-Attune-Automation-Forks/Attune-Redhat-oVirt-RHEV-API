@@ -1,0 +1,13 @@
+{
+    "actionOnStepFail": null, 
+    "enabled": true, 
+    "externalUuid4": "0570a63d-ff53-4002-93d4-7c87a71157a5", 
+    "key": "kssshwait", 
+    "minDowntime": 0, 
+    "name": "KS SSH Wait", 
+    "postWait": 5, 
+    "preWait": 0, 
+    "serverKey": "kickstartednode", 
+    "tcpPort": 22, 
+    "type": "com.servertribe.attune.tuples.StepTcpPingTuple"
+}
