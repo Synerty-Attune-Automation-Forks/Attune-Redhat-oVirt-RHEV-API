@@ -1,0 +1,21 @@
+{
+    "actionOnStepFail": null, 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "99795233-cf6d-4c43-9e3f-bb72263d01f8", 
+    "isBlueprint": true, 
+    "key": "setupovirtsupportonlinux", 
+    "links": [
+        {
+            "stepKey": "installpython3onlinux"
+        }, 
+        {
+            "stepKey": "installlibcurldevelonlinux"
+        }, 
+        {
+            "stepKey": "createvirtualenvonlinux"
+        }
+    ], 
+    "name": "Setup oVirt Support on Linux", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

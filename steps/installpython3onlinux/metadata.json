@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": null, 
+    "enabled": true, 
+    "externalUuid4": "6fcb73f6-f7c4-4f3d-8baa-44209854e82a", 
+    "interpreter": 1, 
+    "key": "installpython3onlinux", 
+    "name": "Install Python3 on Linux", 
+    "osCredKey": "automationworkerlinuxuserroot", 
+    "serverKey": "automationworkerlinuxnode", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}
