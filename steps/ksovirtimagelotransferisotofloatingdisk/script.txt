@@ -50,7 +50,7 @@ if len(disks) == 0:
     
 disk_to_use = disks[0]
 
-os.chdir("kickstart")
+os.chdir("{ksAttuneBaseDir}")
 
 # client.upload() constant parameters
 cafile=None

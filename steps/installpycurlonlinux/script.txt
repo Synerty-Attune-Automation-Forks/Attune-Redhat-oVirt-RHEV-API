@@ -1,0 +1,5 @@
+virtualenv -p `which python3` ks_ovirt_py_venv
+
+export PATH=~/ks_ovirt_py_venv/bin:$PATH
+
+pip install --no-cache-dir --compile --ignore-installed pycurl

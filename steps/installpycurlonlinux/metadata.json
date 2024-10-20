@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": "stop", 
+    "enabled": true, 
+    "externalUuid4": "8f7c267d-4089-458c-bf88-b73f2d36724b", 
+    "interpreter": 1, 
+    "key": "installpycurlonlinux", 
+    "name": "Install pycurl on Linux", 
+    "osCredKey": "automationworkerlinuxuser", 
+    "serverKey": "automationworkerlinuxnode", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

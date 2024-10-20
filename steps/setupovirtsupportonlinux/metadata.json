@@ -7,13 +7,28 @@
     "key": "setupovirtsupportonlinux", 
     "links": [
         {
+            "stepKey": "removevirtualenvonlinux"
+        }, 
+        {
             "stepKey": "installpython3onlinux"
         }, 
         {
             "stepKey": "installlibcurldevelonlinux"
         }, 
         {
+            "stepKey": "installqemuimgonlinux"
+        }, 
+        {
             "stepKey": "createvirtualenvonlinux"
+        }, 
+        {
+            "stepKey": "installpycurlonlinux"
+        }, 
+        {
+            "stepKey": "installovirtenginesdkonlinux"
+        }, 
+        {
+            "stepKey": "installovirtimageioonlinux"
         }
     ], 
     "name": "Setup oVirt Support on Linux", 
