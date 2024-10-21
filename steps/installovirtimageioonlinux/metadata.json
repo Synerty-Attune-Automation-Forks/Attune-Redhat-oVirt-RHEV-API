@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": "stop", 
+    "enabled": true, 
+    "externalUuid4": "9780f18b-0ea7-433a-8767-999597934248", 
+    "interpreter": 1, 
+    "key": "installovirtimageioonlinux", 
+    "name": "Install ovirt-imageio on Linux", 
+    "osCredKey": "automationworkerlinuxuser", 
+    "serverKey": "automationworkerlinuxnode", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

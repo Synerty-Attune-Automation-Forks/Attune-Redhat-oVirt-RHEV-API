@@ -1,0 +1,7 @@
+if [ -d ks_ovirt_py_venv ]
+then
+    echo "Deleting ks_ovirt_py_venv"
+    rm -rf ks_ovirt_py_venv
+else
+    echo "ks_ovirt_py_venv doesn't exist - GOOD"
+fi

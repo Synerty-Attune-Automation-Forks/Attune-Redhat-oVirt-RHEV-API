@@ -1,0 +1,36 @@
+{
+    "actionOnStepFail": null, 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "99795233-cf6d-4c43-9e3f-bb72263d01f8", 
+    "isBlueprint": true, 
+    "key": "setupovirtsupportonlinux", 
+    "links": [
+        {
+            "stepKey": "removevirtualenvonlinux"
+        }, 
+        {
+            "stepKey": "installpython3onlinux"
+        }, 
+        {
+            "stepKey": "installlibcurldevelonlinux"
+        }, 
+        {
+            "stepKey": "installqemuimgonlinux"
+        }, 
+        {
+            "stepKey": "createvirtualenvonlinux"
+        }, 
+        {
+            "stepKey": "installpycurlonlinux"
+        }, 
+        {
+            "stepKey": "installovirtenginesdkonlinux"
+        }, 
+        {
+            "stepKey": "installovirtimageioonlinux"
+        }
+    ], 
+    "name": "Setup oVirt Support on Linux", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

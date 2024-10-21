@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": "stop", 
+    "enabled": true, 
+    "externalUuid4": "d4bccc36-6d18-46e1-88ad-820213651660", 
+    "interpreter": 1, 
+    "key": "removevirtualenvonlinux", 
+    "name": "Remove Virtualenv on Linux", 
+    "osCredKey": "automationworkerlinuxuser", 
+    "serverKey": "automationworkerlinuxnode", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

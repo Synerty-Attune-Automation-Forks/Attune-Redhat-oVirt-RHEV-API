@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": "stop", 
+    "enabled": true, 
+    "externalUuid4": "ca7308e9-0c01-453d-9bf3-4e8a296e65bb", 
+    "interpreter": 1, 
+    "key": "installovirtenginesdkonlinux", 
+    "name": "Install ovirt-engine-sdk on Linux", 
+    "osCredKey": "automationworkerlinuxuser", 
+    "serverKey": "automationworkerlinuxnode", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}

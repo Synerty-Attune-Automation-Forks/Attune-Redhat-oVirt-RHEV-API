@@ -1,0 +1,12 @@
+{
+    "actionOnStepFail": "stop", 
+    "enabled": true, 
+    "externalUuid4": "c51a7534-cce9-4a99-b8e3-186875c9e32b", 
+    "interpreter": 1, 
+    "key": "installqemuimgonlinux", 
+    "name": "Install qemu-img on Linux", 
+    "osCredKey": "automationworkerlinuxuserroot", 
+    "serverKey": "automationworkerlinuxnode", 
+    "successExitCode": 0, 
+    "type": "com.servertribe.attune.tuples.StepSshTuple"
+}
